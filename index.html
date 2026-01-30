@@ -8,7 +8,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@400;700&family=Sarabun:wght@400;700&display=swap');
-        body { font-family: 'Sarabun', 'Noto Sans Lao', sans-serif; }
+        body { font-family: 'Sarabun', 'Noto Sans Lao', sans-serif; scroll-behavior: smooth; }
         .lang-content { transition: all 0.3s ease; }
     </style>
     <script>
@@ -22,118 +22,132 @@
 </head>
 <body class="bg-slate-50 text-slate-900">
 
-    <div class="fixed bottom-6 right-6 z-[100] bg-white/80 backdrop-blur shadow-2xl p-2 rounded-2xl border flex space-x-1">
+    <div class="fixed bottom-6 right-6 z-[100] bg-white shadow-2xl p-2 rounded-2xl border flex space-x-1">
         <button id="btn-th" onclick="changeLang('th')" class="lang-btn px-4 py-2 rounded-xl font-bold bg-green-600 text-white transition">TH</button>
         <button id="btn-lo" onclick="changeLang('lo')" class="lang-btn px-4 py-2 rounded-xl font-bold transition">LAO</button>
         <button id="btn-en" onclick="changeLang('en')" class="lang-btn px-4 py-2 rounded-xl font-bold transition">EN</button>
     </div>
 
-    <section class="relative h-[80vh] flex items-center justify-center text-center text-white">
-        <div class="absolute inset-0 bg-gradient-to-b from-black/70 to-black/40 z-10"></div>
-        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1555421689-491a97ff2040?q=80&w=2070')] bg-cover bg-center"></div>
-        <div class="relative z-20 max-w-5xl px-6">
+    <section class="relative h-[90vh] flex items-center justify-center text-center text-white overflow-hidden">
+        <div class="absolute inset-0 bg-black/60 z-10"></div>
+        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200" class="absolute inset-0 w-full h-full object-cover" alt="Background">
+        <div class="relative z-20 max-w-4xl px-6">
             <div class="lang-th lang-content">
-                <h1 class="text-5xl md:text-7xl font-bold mb-4 italic">VITH <span class="text-green-500">@Big C</span></h1>
-                <p class="text-2xl md:text-3xl font-light mb-8">เชื่อมโยงธุรกิจไทย-ลาว สู่ความยั่งยืนระดับภูมิภาค</p>
+                <h1 class="text-5xl md:text-7xl font-extrabold mb-6">VITH HUB <span class="text-green-500">@Big C</span></h1>
+                <p class="text-2xl mb-8">ไม่ใช่แค่พื้นที่ค้าขาย แต่คือ "ระบบนิเวศการค้านานาชาติ" ที่สมบูรณ์แบบที่สุด</p>
             </div>
             <div class="lang-lo lang-content hidden">
-                <h1 class="text-5xl md:text-7xl font-bold mb-4 italic">VITH <span class="text-green-500">@Big C</span></h1>
-                <p class="text-2xl md:text-3xl font-light mb-8">ເຊື່ອມໂຍງທຸລະກິດໄທ-ລາວ ສູ່ຄວາມຍືນຍົງລະດັບພາກພື້ນ</p>
+                <h1 class="text-5xl md:text-7xl font-extrabold mb-6">VITH HUB <span class="text-green-500">@Big C</span></h1>
+                <p class="text-2xl mb-8">ບໍ່ແມ່ນພຽງແຕ່ພື້ນທີ່ການຄ້າ, ແຕ່ແມ່ນ "ລະບົບນິເວດການຄ້າສາກົນ" ທີ່ສົມບູນແບບທີ່ສຸດ</p>
             </div>
             <div class="lang-en lang-content hidden">
-                <h1 class="text-5xl md:text-7xl font-bold mb-4 italic">VITH <span class="text-green-500">@Big C</span></h1>
-                <p class="text-2xl md:text-3xl font-light mb-8">Empowering Thai-Lao Trade Ecosystem</p>
+                <h1 class="text-5xl md:text-7xl font-extrabold mb-6">VITH HUB <span class="text-green-500">@Big C</span></h1>
+                <p class="text-2xl mb-8">Not just a marketplace, but the most complete International Retail Ecosystem.</p>
             </div>
-            <a href="#contact" class="bg-red-600 hover:bg-red-700 text-white px-10 py-4 rounded-full font-bold text-xl shadow-xl transition">Contact Us / ติดต่อเรา</a>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#contact" class="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg transition">ร่วมโครงการ / Contact Us</a>
+                <a href="#roadmap" class="bg-white/10 hover:bg-white/20 border border-white text-white px-8 py-4 rounded-full font-bold text-lg transition">Roadmap</a>
+            </div>
         </div>
     </section>
 
-    <section class="py-20 container mx-auto px-6">
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="bg-white p-10 rounded-3xl shadow-lg border-t-8 border-green-500">
-                <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center text-green-600 text-3xl mb-6"><i class="fas fa-store"></i></div>
-                <div class="lang-th lang-content">
-                    <h3 class="text-2xl font-bold mb-4">ศูนย์กลางการค้า</h3>
-                    <p class="text-slate-600">พื้นที่ Showroom และ Kiosk ถาวร พร้อมกิจกรรม 7-Day Mega Event ดึงทราฟฟิกเข้าห้างอย่างต่อเนื่อง</p>
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16 underline decoration-green-500 decoration-8 underline-offset-8">THE CONCEPT</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="group relative overflow-hidden rounded-3xl bg-slate-100 p-8 hover:bg-green-50 transition">
+                    <h3 class="text-2xl font-bold text-green-700 mb-4">Zone A | Bridge Market</h3>
+                    <p class="text-slate-600">Urban Camping Festival: พื้นที่สร้างสรรค์ดึงดูดกลุ่มคนรุ่นใหม่และสร้าง Traffic ตลอดสัปดาห์</p>
                 </div>
-                <div class="lang-lo lang-content hidden">
-                    <h3 class="text-2xl font-bold mb-4">ສູນກາງການຄ້າ</h3>
-                    <p class="text-slate-600">ພື້ນທີ່ Showroom ແລະ Kiosk ຖາວອນ ພ້ອມກິດຈະກຳ 7-Day Mega Event ດຶງດູດລູກຄ້າຢ່າງຕໍ່ເນື່ອງ</p>
-                </div>
-                <div class="lang-en lang-content hidden">
-                    <h3 class="text-2xl font-bold mb-4">Trade Hub</h3>
-                    <p class="text-slate-600">Permanent showrooms and kiosks with strategic 7-Day Mega Events to drive constant traffic.</p>
-                </div>
-            </div>
-
-            <div class="bg-white p-10 rounded-3xl shadow-lg border-t-8 border-red-500">
-                <div class="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center text-red-600 text-3xl mb-6"><i class="fas fa-user-graduate"></i></div>
-                <div class="lang-th lang-content">
-                    <h3 class="text-2xl font-bold mb-4">ศูนย์ข้อมูลแรงงาน</h3>
-                    <p class="text-slate-600">Labor Information Center ให้ข้อมูลกฎหมายแรงงานและนัดพบแรงงาน (Career Day) เพื่อความถูกต้องและปลอดภัย</p>
-                </div>
-                <div class="lang-lo lang-content hidden">
-                    <h3 class="text-2xl font-bold mb-4">ສູນຂໍ້ມູນແຮງງານ</h3>
-                    <p class="text-slate-600">Labor Information Center ໃຫ້ຂໍ້ມູນກົດໝາຍແຮງງານ ແລະ ນັດພົບແຮງງານ (Career Day) ເພື່ອຄວາມຖືກຕ້ອງ</p>
-                </div>
-                <div class="lang-en lang-content hidden">
-                    <h3 class="text-2xl font-bold mb-4">Labor Center</h3>
-                    <p class="text-slate-600">Providing legal guidance and career matching services to ensure safe and professional employment.</p>
-                </div>
-            </div>
-
-            <div class="bg-white p-10 rounded-3xl shadow-lg border-t-8 border-blue-500">
-                <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 text-3xl mb-6"><i class="fas fa-handshake"></i></div>
-                <div class="lang-th lang-content">
-                    <h3 class="text-2xl font-bold mb-4">B2B Matching</h3>
-                    <p class="text-slate-600">เชื่อมโยงวัตถุดิบลาว เช่น เมล็ดกาแฟคุณภาพ เข้าสู่มาตรฐานแบรนด์ไทยและโอกาสส่งออกสากล</p>
-                </div>
-                <div class="lang-lo lang-content hidden">
-                    <h3 class="text-2xl font-bold mb-4">ຈັບຄູ່ທຸລະກິດ</h3>
-                    <p class="text-slate-600">ເຊື່ອມໂຍງວັດຖຸດິບລາວ ເຊັ່ນ ເມັດກາເຟທີ່ມີຄຸນນະພາບ ເຂົ້າສູ່ມາດຕະຖານແບຣນໄທ ແລະ ສາກົນ</p>
-                </div>
-                <div class="lang-en lang-content hidden">
-                    <h3 class="text-2xl font-bold mb-4">Supply Chain</h3>
-                    <p class="text-slate-600">Integrating Lao raw materials like premium coffee with Thai industrial standards for global export.</p>
+                <div class="group relative overflow-hidden rounded-3xl bg-slate-100 p-8 hover:bg-blue-50 transition">
+                    <h3 class="text-2xl font-bold text-blue-700 mb-4">Zone C | Business Core</h3>
+                    <p class="text-slate-600">Refined Loft Style: ศูนย์กลางธุรกิจระดับพรีเมียม รวม Showroom สินค้านวัตกรรมคัดสรร</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="bg-slate-900 text-white py-20 px-6">
-        <div class="container mx-auto max-w-4xl">
-            <h2 class="text-3xl font-bold text-center mb-12">Monthly Event Themes 2026</h2>
-            <div class="space-y-6">
-                <div class="flex items-center space-x-6 border-l-4 border-green-500 pl-6 py-4 bg-white/5 rounded-r-xl">
-                    <span class="text-3xl font-bold text-green-500">APR</span>
+    <section class="py-24 bg-slate-900 text-white">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div>
+                <h2 class="text-3xl font-bold mb-8 text-red-500 border-l-4 border-red-500 pl-4 uppercase">Labor & Legal Center</h2>
+                <ul class="space-y-6">
+                    <li class="flex items-start gap-4">
+                        <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                        <span><strong>Safety & Compliance:</strong> ศูนย์กลางข้อมูลแรงงานถูกต้องตามกฎหมาย</span>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                        <span><strong>VITH Career Day:</strong> กิจกรรมนัดพบแรงงานคุณภาพ (Job Matching)</span>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h2 class="text-3xl font-bold mb-8 text-blue-500 border-l-4 border-blue-500 pl-4 uppercase">B2B & Supply Chain</h2>
+                <ul class="space-y-6">
+                    <li class="flex items-start gap-4">
+                        <i class="fas fa-link text-blue-400 mt-1"></i>
+                        <span><strong>Raw Material Matching:</strong> นำกลุ่มผู้ผลิตลาว (เช่น กาแฟ) พบเจ้าของแบรนด์ไทย</span>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <i class="fas fa-link text-blue-400 mt-1"></i>
+                        <span><strong>ODOP Synergy:</strong> ยกระดับสินค้าลาวสู่มาตรฐานสากลด้วยมาตรฐานการผลิตไทย</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="roadmap" class="py-24 bg-white">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <h2 class="text-4xl font-bold text-center mb-16 italic">3-PHASE ROADMAP</h2>
+            <div class="space-y-12">
+                <div class="flex gap-6 border-l-4 border-slate-200 pl-8 relative">
+                    <div class="absolute -left-[10px] top-0 w-4 h-4 rounded-full bg-green-500"></div>
                     <div>
-                        <h4 class="text-xl font-bold">Songkran & Career Fair</h4>
-                        <p class="text-slate-400">Festival celebration and major job matching event.</p>
+                        <h4 class="text-xl font-bold text-green-600">Phase 1: Grand Launch (March 2026)</h4>
+                        <p class="text-slate-600">เปิดตัวโครงการด้วยกิจกรรมใหญ่ 7 วัน เพื่อสร้างการรับรู้และทดสอบตลาด</p>
                     </div>
                 </div>
-                <div class="flex items-center space-x-6 border-l-4 border-blue-500 pl-6 py-4 bg-white/5 rounded-r-xl">
-                    <span class="text-3xl font-bold text-blue-500">MAY</span>
+                <div class="flex gap-6 border-l-4 border-slate-200 pl-8 relative">
+                    <div class="absolute -left-[10px] top-0 w-4 h-4 rounded-full bg-blue-500"></div>
                     <div>
-                        <h4 class="text-xl font-bold">Coffee & Raw Material Expo</h4>
-                        <p class="text-slate-400">B2B platform for local Lao producers and Thai brands.</p>
+                        <h4 class="text-xl font-bold text-blue-600">Phase 2: Growth & Permanent Hub</h4>
+                        <p class="text-slate-600">พัฒนาพื้นที่คีออสก์ถาวรเพื่อความต่อเนื่องในการค้าขายระยะยาว</p>
+                    </div>
+                </div>
+                <div class="flex gap-6 border-l-4 border-slate-200 pl-8 relative">
+                    <div class="absolute -left-[10px] top-0 w-4 h-4 rounded-full bg-red-500"></div>
+                    <div>
+                        <h4 class="text-xl font-bold text-red-600">Phase 3: International Gateway</h4>
+                        <p class="text-slate-600">ยกระดับสู่ศูนย์กลางการค้านานาชาติเชื่อมโยงทั่วภูมิภาคอินโดจีน</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-20 container mx-auto px-6 max-w-xl">
-        <div class="bg-white p-10 rounded-[3rem] shadow-2xl border">
-            <h2 class="text-3xl font-bold text-center mb-8">Register / ติดต่อเรา</h2>
-            <form action="#" class="space-y-4">
-                <input type="text" placeholder="Company Name / ชื่อบริษัท" class="w-full p-4 rounded-2xl bg-slate-100 outline-none focus:ring-2 focus:ring-green-500 transition">
-                <input type="text" placeholder="Line / WhatsApp / Tel" class="w-full p-4 rounded-2xl bg-slate-100 outline-none focus:ring-2 focus:ring-green-500 transition">
-                <button class="w-full bg-slate-900 text-white font-bold py-5 rounded-2xl hover:bg-green-600 transition shadow-lg">Submit Information</button>
+    <section id="contact" class="py-24 bg-slate-100">
+        <div class="container mx-auto px-6 max-w-2xl bg-white p-12 rounded-[3rem] shadow-2xl">
+            <h2 class="text-3xl font-bold text-center mb-8">REGISTER / ติดต่อร่วมโครงการ</h2>
+            <form class="space-y-6">
+                <div>
+                    <label class="block text-sm font-bold mb-2 text-slate-500 uppercase">I am interested as:</label>
+                    <select class="w-full p-4 rounded-2xl bg-slate-50 border-none focus:ring-2 focus:ring-green-500">
+                        <option>Thai Business Owner (ผู้ประกอบการไทย)</option>
+                        <option>Lao Producer/Supplier (ผู้ผลิตวัตถุดิบลาว)</option>
+                        <option>Job Seeker (ผู้สมัครงาน/แรงงาน)</option>
+                        <option>Partner/Sponsor (พันธมิตรโครงการ)</option>
+                    </select>
+                </div>
+                <input type="text" placeholder="Name / Company Name" class="w-full p-4 rounded-2xl bg-slate-50 outline-none">
+                <input type="text" placeholder="WhatsApp / Line / Tel" class="w-full p-4 rounded-2xl bg-slate-50 outline-none">
+                <button class="w-full bg-slate-900 text-white font-bold py-5 rounded-2xl hover:bg-green-600 shadow-xl transition">SUBMIT INFORMATION</button>
             </form>
         </div>
     </section>
 
-    <footer class="py-10 text-center text-slate-400">
+    <footer class="py-10 text-center text-slate-400 bg-white">
         <p>© 2026 Vientiane International Thai Hub (VITH) @Big C ITECC</p>
     </footer>
 
