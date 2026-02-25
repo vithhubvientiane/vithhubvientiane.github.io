@@ -2,36 +2,35 @@
     --red: #E31E24; --red-dark: #B01519; --gold: #F5C842; --black: #0D0D0D;
     --off-white: #F5F2EC; --muted: #6B6B7B; --border: rgba(255,255,255,0.08);
 }
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: var(--black); color: var(--off-white); font-family: 'Sarabun', sans-serif; overflow-x: hidden; }
 
-/* Language Toggle */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--black); color: var(--off-white); font-family: 'Sarabun', 'Noto Sans Lao', sans-serif; overflow-x: hidden; line-height: 1.6; }
+
+/* Language Control */
 [data-lang] { display: none; }
 [data-lang].active { display: block; }
 span[data-lang].active { display: inline; }
 
 /* Navigation */
-nav { position: fixed; top: 0; width: 100%; height: 64px; background: rgba(13,13,13,0.85); backdrop-filter: blur(10px); z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; border-bottom: 1px solid var(--border); }
-.nav-logo { font-family: 'Bebas Neue'; font-size: 1.5rem; color: #fff; }
+nav { position: fixed; top: 0; left: 0; right: 0; height: 64px; background: rgba(13,13,13,0.9); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; }
+.nav-logo { font-family: 'Bebas Neue'; font-size: 1.6rem; color: #fff; }
 .nav-logo span { color: var(--red); }
 
 /* Hero */
-#hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; padding: 2rem; }
-.hero-title { font-family: 'Bebas Neue'; font-size: clamp(3rem, 10vw, 8rem); line-height: 1; }
-.hero-desc { max-width: 600px; margin: 1.5rem auto; color: rgba(255,255,255,0.7); }
+#hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; padding-top: 64px; text-align: center; }
+.hero-bg { position: absolute; inset: 0; background: radial-gradient(circle at 20% 50%, rgba(227,30,36,0.15), transparent); z-index: -1; }
+.hero-title { font-family: 'Bebas Neue'; font-size: clamp(3.5rem, 12vw, 8rem); line-height: 0.9; margin-bottom: 1rem; }
+.hero-title .sub { display: block; font-size: 0.4em; color: var(--gold); letter-spacing: 4px; }
+.hero-title .amp { color: var(--red); }
 
-/* Cards & Grid */
-.section-pad { padding: 5rem 2rem; }
-.section-center { max-width: 1100px; margin: 0 auto; }
-.moat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 3rem; }
-.moat-card { background: #1a1a1a; padding: 2rem; border-radius: 12px; border: 1px solid var(--border); }
+/* Animation Reveal */
+.reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
 
 /* Buttons */
-.btn-primary { background: var(--red); color: #fff; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; }
-.btn-secondary { background: transparent; color: #fff; border: 1px solid #fff; padding: 12px 30px; border-radius: 50px; text-decoration: none; margin-left: 10px; }
+.btn-primary { background: var(--red); color: white; padding: 14px 32px; border-radius: 50px; text-decoration: none; font-weight: 800; display: inline-block; transition: 0.3s; }
+.btn-secondary { background: rgba(255,255,255,0.1); color: white; padding: 14px 32px; border-radius: 50px; text-decoration: none; display: inline-block; margin-left: 10px; border: 1px solid rgba(255,255,255,0.2); }
 
-/* Floating & Utils */
-.line-float { position: fixed; bottom: 20px; right: 20px; background: #06C755; color: #fff; padding: 12px 20px; border-radius: 50px; text-decoration: none; z-index: 1000; font-weight: bold; }
-.progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--red); width: 0; z-index: 1001; }
-.reveal { opacity: 0; transform: translateY(30px); transition: 0.8s all; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
+/* Utils */
+.progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--red); z-index: 9999; width: 0; }
+.line-float { position: fixed; bottom: 2rem; right: 2rem; background: #06C755; color: white; padding: 12px 24px; border-radius: 50px; text-decoration: none; font-weight: bold; z-index: 100; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
