@@ -55,9 +55,12 @@
         <div class="section-center">
             <div class="moat-card reveal" style="max-width: 600px; margin: 0 auto; text-align: center;">
                 <h2 class="section-title" style="font-size: 2.5rem; margin-bottom: 1.5rem;">จองบูธ / ขอ Proposal</h2>
-                <input type="text" id="f-name" placeholder="ชื่อ / บริษัท" style="width:100%; padding:15px; margin-bottom:15px; background:rgba(255,255,255,0.05); border:1px solid var(--border); color:#fff; border-radius:10px;">
-                <input type="text" id="f-contact" placeholder="LINE ID หรือเบอร์โทร" style="width:100%; padding:15px; margin-bottom:20px; background:rgba(255,255,255,0.05); border:1px solid var(--border); color:#fff; border-radius:10px;">
-                <button onclick="submitLead()" class="btn-primary" style="width:100%;">ส่งข้อมูลสมัคร</button>
+                <div id="leadForm">
+                    <input type="text" id="f-name" placeholder="ชื่อ / บริษัท" style="width:100%; padding:15px; margin-bottom:15px; background:rgba(255,255,255,0.05); border:1px solid var(--border); color:#fff; border-radius:10px;">
+                    <input type="text" id="f-contact" placeholder="LINE ID หรือเบอร์โทร" style="width:100%; padding:15px; margin-bottom:15px; background:rgba(255,255,255,0.05); border:1px solid var(--border); color:#fff; border-radius:10px;">
+                    <input type="text" id="f-product" placeholder="สินค้าของคุณ" style="width:100%; padding:15px; margin-bottom:20px; background:rgba(255,255,255,0.05); border:1px solid var(--border); color:#fff; border-radius:10px;">
+                    <button onclick="submitLead()" class="btn-primary" style="width:100%;">ส่งข้อมูลสมัคร</button>
+                </div>
             </div>
         </div>
     </section>
