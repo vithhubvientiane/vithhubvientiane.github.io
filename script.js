@@ -3,8 +3,8 @@ function setLang(lang) {
     document.querySelectorAll('[data-lang="' + lang + '"]').forEach(el => el.classList.add('active'));
     document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
     
-    const activeBtn = Array.from(document.querySelectorAll('.lang-btn')).find(b => b.textContent.toLowerCase().includes(lang === 'la' ? 'lao' : lang));
-    if (activeBtn) activeBtn.classList.add('active');
+    const currentBtn = Array.from(document.querySelectorAll('.lang-btn')).find(b => b.textContent.toLowerCase().includes(lang === 'la' ? 'lao' : lang));
+    if (currentBtn) currentBtn.classList.add('active');
     document.documentElement.lang = (lang === 'la' ? 'lo' : lang);
 }
 
@@ -24,7 +24,8 @@ window.addEventListener('scroll', () => {
 function submitLead() {
     const name = document.getElementById('f-name').value;
     const contact = document.getElementById('f-contact').value;
+    const product = document.getElementById('f-product').value;
     if (!name || !contact) return alert('กรุณากรอกข้อมูลให้ครบถ้วน');
-    const msg = encodeURIComponent(`สนใจจองบูธ VITH Hub\nชื่อ/บริษัท: ${name}\nติดต่อ: ${contact}`);
+    const msg = encodeURIComponent(`สนใจจองบูธ VITH Hub\nชื่อ/บริษัท: ${name}\nติดต่อ: ${contact}\nสินค้า: ${product}`);
     window.open(`https://line.me/ti/p/YOUR_LINE_ID?text=${msg}`, '_blank');
 }
