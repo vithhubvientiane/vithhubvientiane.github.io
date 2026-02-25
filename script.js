@@ -1,37 +1,30 @@
-// สลับภาษา
-function setLang(lang) {
-    document.querySelectorAll('[data-lang]').forEach(el => el.classList.remove('active'));
-    document.querySelectorAll('[data-lang="' + lang + '"]').forEach(el => el.classList.add('active'));
-    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-    
-    // ค้นหาปุ่มที่ถูกคลิก
-    const btns = document.querySelectorAll('.lang-btn');
-    btns.forEach(btn => {
-        if(btn.innerText.toLowerCase().includes(lang === 'la' ? 'lao' : lang)) {
-            btn.classList.add('active');
-        }
-    });
-    document.documentElement.lang = lang === 'la' ? 'lo' : lang;
-}
-
-// Scroll Reveal
+// Scroll Reveal System
 const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.15 });
+    entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+}, { threshold: 0.1 });
+
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 // Progress Bar
 window.addEventListener('scroll', () => {
-    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
-    document.getElementById('progressBar').style.width = pct + '%';
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    document.getElementById("progressBar").style.width = scrolled + "%";
 });
 
-// ฟังก์ชันส่งข้อมูล (Lead Form)
+// Language Switcher (Simple Version)
+function setLang(lang) {
+    alert("ระบบภาษากำลังอัปเดตข้อมูลภาษา " + lang.toUpperCase());
+    // ส่วนนี้สามารถเพิ่มระบบสลับข้อความในอนาคตได้ครับ
+}
+
+// Form Submit
 function submitLead() {
     const name = document.getElementById('f-name').value;
     const contact = document.getElementById('f-contact').value;
-    if(!name || !contact) return alert('กรุณากรอกชื่อและเบอร์ติดต่อ');
-    
-    const msg = encodeURIComponent(`สนใจจองบูธ VITH Hub\nชื่อ: ${name}\nติดต่อ: ${contact}`);
-    window.open(`https://line.me/ti/p/YOUR_LINE_ID?text=${msg}`, '_blank');
+    if(!name || !contact) return alert('กรุณากรอกข้อมูลให้ครบ');
+    window.open(`https://line.me/ti/p/YOUR_LINE_ID?text=สนใจจองบูธจากคุณ ${name} (${contact})`, '_blank');
 }
