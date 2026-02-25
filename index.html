@@ -3,83 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VITH Hub × Big C Vientiane | สะพานการค้าไทย-ลาว</title>
+    <title>VITH Hub × Big C Vientiane</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Sarabun:wght@300;400;600;700;800&family=Noto+Sans+Lao:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="progress-bar" id="progressBar"></div>
-    <div class="toast" id="toast">
-        <div class="toast-title">✅ ส่งข้อมูลสำเร็จ!</div>
-        <div class="toast-msg">ทีมงานจะติดต่อกลับภายใน 24 ชั่วโมงครับ</div>
-    </div>
-
-    <a class="line-float" href="https://line.me/ti/p/YOUR_LINE_ID" target="_blank">
-        <svg width="18" height="18" viewBox="0 0 48 48" fill="none"><path d="M24 4C13 4 4 11.8 4 21.5c0 5.5 3.1 10.4 7.9 13.7-.3 1.2-1.1 4.3-1.3 5 0 0-.1.3.2.4.2.1.5 0 .5 0 .7-.1 8.5-5.6 9.8-6.5.9.1 1.9.2 2.9.2 11 0 20-7.8 20-17.3S35 4 24 4z" fill="white"/></svg>
-        <span data-lang="th" class="active">ติดต่อ LINE</span>
-        <span data-lang="la">ຕິດຕໍ່ LINE</span>
-        <span data-lang="en">Chat on LINE</span>
-    </a>
 
     <nav>
         <div class="nav-logo">VITH <span>HUB</span></div>
-        <div class="nav-cta">
-            <span class="nav-slots">🔴 
-                <span data-lang="th" class="active">เหลือที่ว่าง 19 บูธ</span>
-                <span data-lang="la">ຍັງເຫຼືອ 19 ທີ່</span>
-                <span data-lang="en">19 slots left</span>
-            </span>
-            <div class="lang-switcher">
-                <button class="lang-btn active" onclick="setLang('th')">TH</button>
-                <button class="lang-btn" onclick="setLang('la')">LAO</button>
-                <button class="lang-btn" onclick="setLang('en')">EN</button>
-            </div>
-            <a href="#contact" class="btn-nav">
-                <span data-lang="th" class="active">จองบูธ</span>
-                <span data-lang="la">ຈອງບູດ</span>
-                <span data-lang="en">Book Now</span>
-            </a>
+        <div class="lang-switcher">
+            <button class="lang-btn active" onclick="setLang('th')">TH</button>
+            <button class="lang-btn" onclick="setLang('la')">LAO</button>
+            <button class="lang-btn" onclick="setLang('en')">EN</button>
         </div>
     </nav>
 
     <section id="hero">
         <div class="hero-bg"></div>
-        <div class="hero-grid"></div>
         <div class="hero-inner">
-            <div class="hero-badge reveal"><span class="badge-dot"></span><span data-lang="th" class="active">เปิดรับสมัคร มีนาคม 2026</span><span data-lang="la">ເປີດຮັບສະໝັກ ມີນາ 2026</span></div>
-            <h1 class="hero-title reveal"><span class="sub">THE TRADE BRIDGE</span>VITH <span class="amp">×</span> BIG C</h1>
-            <p class="hero-desc reveal"><span data-lang="th" class="active">ยกสินค้าไทยไปขายกลางห้างใหญ่ที่สุดในลาว <strong>ไม่ต้องส่งทีมไปเอง</strong> เราจัดการให้ครบ</span><span data-lang="la">ຍົກສິນຄ້າໄທໄປຂາຍກາງຫ້າງໃຫຍ່ທີ່ສຸດໃນລາວ <strong>ບໍ່ຕ້ອງສົ່ງທີມໄປເອງ</strong></span></p>
+            <h1 class="hero-title reveal">
+                <span class="sub">THE TRADE BRIDGE</span>VITH × BIG C
+            </h1>
+            <p class="hero-desc reveal">
+                <span data-lang="th" class="active">ยกสินค้าไทยไปขายกลางห้างใหญ่ที่สุดในลาว <strong>ไม่ต้องส่งทีมไปเอง</strong></span>
+                <span data-lang="la">ຍົກສິນຄ້າໄທໄປຂາຍກາງຫ້າງໃຫຍ່ທີ່ສຸດໃນລາວ</span>
+            </p>
             <div class="hero-btns reveal">
-                <a href="#packages" class="btn-primary"><span data-lang="th" class="active">ดูแพ็กเกจ</span><span data-lang="la">ແພັກເກັດ</span></a>
-                <a href="#phases" class="btn-secondary"><span data-lang="th" class="active">แผนงาน 2 Phase</span><span data-lang="la">ແຜນງານ 2 Phase</span></a>
+                <a href="#packages" class="btn-primary">ดูแพ็กเกจ</a>
             </div>
         </div>
     </section>
 
-    <section id="why" class="section-pad">
-        <div class="section-center">
-            <div class="reveal"><h2 class="section-title">จุดแข็งที่คู่แข่งทำไม่ได้</h2></div>
-            <div class="moat-grid reveal">
-                <div class="moat-card">🏢 <h3>Prime Location</h3><p>ชั้น 1 Big C เวียงจันทน์ ติดทางเข้าหลัก</p></div>
-                <div class="moat-card">🚛 <h3>Logistics Master</h3><p>ขนส่งผ่าน Royal Bridge 99 จากไทยถึงบูธ</p></div>
-                <div class="moat-card">👥 <h3>One-Stop Service</h3><p>มีพนักงานช่วยขาย ไม่ต้องส่งคนจากไทยมาเอง</p></div>
-                <div class="moat-card">🎯 <h3>Organic Traffic</h3><p>ดึงคนด้วย Skill Center ศูนย์ข้อมูลแรงงาน</p></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="section-pad">
-        <div class="contact-wrap reveal">
-            <div class="form-box">
-                <div class="form-title">จองบูธ / ขอ Proposal</div>
-                <div id="leadForm">
-                    <div class="form-group"><label>ชื่อ / บริษัท</label><input class="form-input" id="f-name" type="text"></div>
-                    <div class="form-group"><label>ติดต่อ (LINE/โทร)</label><input class="form-input" id="f-contact" type="text"></div>
-                    <button class="form-submit" onclick="submitLead()">ส่งข้อมูล</button>
-                </div>
-            </div>
-        </div>
-    </section>
+    <a class="line-float" href="https://line.me/ti/p/YOUR_LINE_ID" target="_blank">
+        <span>ติดต่อ LINE</span>
+    </a>
 
     <script src="script.js"></script>
 </body>
