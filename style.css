@@ -13,8 +13,8 @@ body {
   background: var(--black);
   color: var(--off-white);
   font-family: 'Sarabun', 'Noto Sans Lao', sans-serif;
-  overflow-x: hidden;
+  line-height: 1.6;
 }
 
-/* ใส่ CSS ทั้งหมดที่คุณมีในไฟล์ x4.html ตั้งแต่บรรทัดแรกจนถึงบรรทัดสุดท้ายของ Style */
-/* ... */
+/* ใส่ CSS จากส่วน <style> ในไฟล์เดิมของคุณทั้งหมดลงในไฟล์นี้ */
+/* รวมถึง .hero, .moat-card, .phase-card, .pkg-card, .form-box ฯลฯ */
