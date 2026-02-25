@@ -1,99 +1,37 @@
-/* ─── 1. VARIABLES & RESET ─── */
 :root {
-    --red: #E31E24;
-    --red-dark: #B01519;
-    --gold: #F5C842;
-    --black: #0D0D0D;
-    --off-white: #F5F2EC;
-    --slate: #1A1A2E;
-    --muted: #6B6B7B;
-    --border: rgba(255,255,255,0.08);
+    --red: #E31E24; --red-dark: #B01519; --gold: #F5C842; --black: #0D0D0D;
+    --off-white: #F5F2EC; --muted: #6B6B7B; --border: rgba(255,255,255,0.08);
 }
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--black); color: var(--off-white); font-family: 'Sarabun', sans-serif; overflow-x: hidden; }
 
-html { font-size: 16px; scroll-behavior: smooth; }
-
-body {
-    background: var(--black);
-    color: var(--off-white);
-    font-family: 'Sarabun', 'Noto Sans Lao', sans-serif;
-    overflow-x: hidden;
-}
-
-/* ─── 2. LANGUAGE & UTILS ─── */
+/* Language Toggle */
 [data-lang] { display: none; }
 [data-lang].active { display: block; }
 span[data-lang].active { display: inline; }
 
-body::before {
-    content: '';
-    position: fixed; inset: 0; z-index: 0; pointer-events: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-    opacity: 0.5;
-}
-
-/* ─── 3. NAVIGATION ─── */
-nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(13,13,13,0.88);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 2rem;
-    height: 64px;
-    display: flex; align-items: center; justify-content: space-between;
-}
-
-.nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 0.1em; color: #fff; }
+/* Navigation */
+nav { position: fixed; top: 0; width: 100%; height: 64px; background: rgba(13,13,13,0.85); backdrop-filter: blur(10px); z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; border-bottom: 1px solid var(--border); }
+.nav-logo { font-family: 'Bebas Neue'; font-size: 1.5rem; color: #fff; }
 .nav-logo span { color: var(--red); }
 
-.lang-switcher { display: flex; gap: 4px; background: rgba(255,255,255,0.06); border-radius: 99px; padding: 4px; }
-.lang-btn { background: none; border: none; cursor: pointer; font-size: 0.72rem; font-weight: 700; color: var(--muted); padding: 6px 14px; border-radius: 99px; transition: 0.2s; }
-.lang-btn.active { background: var(--red); color: #fff; }
+/* Hero */
+#hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; padding: 2rem; }
+.hero-title { font-family: 'Bebas Neue'; font-size: clamp(3rem, 10vw, 8rem); line-height: 1; }
+.hero-desc { max-width: 600px; margin: 1.5rem auto; color: rgba(255,255,255,0.7); }
 
-.btn-nav { background: var(--red); color: #fff; border: none; padding: 8px 20px; border-radius: 99px; text-decoration: none; font-weight: 800; font-size: 0.8rem; }
-
-/* ─── 4. HERO SECTION ─── */
-#hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 7rem 2rem 5rem; overflow: hidden; }
-.hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 15% 50%, rgba(227,30,36,0.18) 0%, transparent 70%), linear-gradient(180deg, #0D0D0D 0%, #110810 100%); }
-.hero-grid { position: absolute; inset: 0; opacity: 0.04; background-image: linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px); background-size: 60px 60px; }
-.hero-inner { position: relative; z-index: 1; max-width: 1000px; text-align: center; }
-
-.hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(4rem, 12vw, 9rem); line-height: 0.9; margin-bottom: 0.5rem; }
-.hero-title .amp { color: var(--red); }
-.hero-title .sub { color: var(--gold); font-size: 0.55em; display: block; letter-spacing: 0.15em; }
-
-.btn-primary { background: var(--red); color: #fff; padding: 16px 36px; border-radius: 99px; text-decoration: none; font-weight: 800; box-shadow: 0 8px 32px rgba(227,30,36,0.35); display: inline-block; transition: 0.2s; }
-.btn-secondary { background: rgba(255,255,255,0.06); color: #fff; border: 1px solid rgba(255,255,255,0.15); padding: 16px 36px; border-radius: 99px; text-decoration: none; display: inline-block; transition: 0.2s; }
-
-/* ─── 5. COMPONENTS (Cards & Forms) ─── */
-.section-pad { padding: 6rem 2rem; }
+/* Cards & Grid */
+.section-pad { padding: 5rem 2rem; }
 .section-center { max-width: 1100px; margin: 0 auto; }
-.section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 1rem; }
+.moat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 3rem; }
+.moat-card { background: #1a1a1a; padding: 2rem; border-radius: 12px; border: 1px solid var(--border); }
 
-.moat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5px; background: var(--border); border-radius: 16px; overflow: hidden; margin-top: 3.5rem; }
-.moat-card { background: #111117; padding: 2.5rem 2rem; }
+/* Buttons */
+.btn-primary { background: var(--red); color: #fff; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; }
+.btn-secondary { background: transparent; color: #fff; border: 1px solid #fff; padding: 12px 30px; border-radius: 50px; text-decoration: none; margin-left: 10px; }
 
-.phase-card { border: 1px solid var(--border); border-radius: 20px; padding: 2.5rem 2rem; position: relative; }
-.phase-card.featured { border-color: var(--red); }
-.phase-num { font-family: 'Bebas Neue', sans-serif; font-size: 5rem; color: rgba(255,255,255,0.06); position: absolute; top: 1.2rem; right: 1.5rem; }
-
-.pkg-card { border: 1px solid var(--border); border-radius: 24px; padding: 2.5rem 2rem; transition: 0.25s; }
-.pkg-card.recommended { border-color: var(--red); background: linear-gradient(145deg, rgba(227,30,36,0.06) 0%, rgba(13,13,13,0.95) 60%); }
-.pkg-price { font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; color: #fff; }
-
-.form-box { background: #0f0f16; border: 1px solid var(--border); border-radius: 24px; padding: 2.5rem 2rem; }
-.form-input, .form-select { width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: #fff; padding: 12px 16px; margin-bottom: 1rem; }
-.form-submit { width: 100%; background: var(--red); color: #fff; border: none; padding: 15px; border-radius: 10px; font-weight: 800; cursor: pointer; }
-
-/* ─── 6. ANIMATIONS & FLOATING ─── */
-.progress-bar { position: fixed; top: 0; left: 0; z-index: 999; height: 3px; background: var(--red); width: 0%; }
-.reveal { opacity: 0; transform: translateY(32px); transition: 0.7s ease; }
+/* Floating & Utils */
+.line-float { position: fixed; bottom: 20px; right: 20px; background: #06C755; color: #fff; padding: 12px 20px; border-radius: 50px; text-decoration: none; z-index: 1000; font-weight: bold; }
+.progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--red); width: 0; z-index: 1001; }
+.reveal { opacity: 0; transform: translateY(30px); transition: 0.8s all; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
-
-.line-float { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 200; background: #06C755; color: #fff; border-radius: 99px; padding: 12px 22px; text-decoration: none; display: flex; align-items: center; gap: 8px; box-shadow: 0 8px 30px rgba(6,199,85,0.4); }
-
-.toast { position: fixed; bottom: 6rem; right: 1.5rem; z-index: 300; background: #0f0f16; border-left: 4px solid #06C755; padding: 1rem 1.5rem; border-radius: 12px; transform: translateX(120%); transition: 0.4s; }
-.toast.show { transform: translateX(0); }
-
-footer { background: #070709; border-top: 1px solid var(--border); padding: 2.5rem 2rem; text-align: center; color: var(--muted); font-size: 0.8rem; }
