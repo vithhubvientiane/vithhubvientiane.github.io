@@ -9,22 +9,36 @@
 </head>
 <body>
     <div class="progress-bar" id="progressBar"></div>
-    <div class="toast" id="toast"><div class="toast-title">✅ ส่งข้อมูลสำเร็จ!</div></div>
+    <div class="toast" id="toast">
+        <div class="toast-title">✅ ส่งข้อมูลสำเร็จ!</div>
+        <div class="toast-msg">ทีมงานจะติดต่อกลับภายใน 24 ชั่วโมงครับ</div>
+    </div>
 
     <a class="line-float" href="https://line.me/ti/p/YOUR_LINE_ID" target="_blank">
         <svg width="18" height="18" viewBox="0 0 48 48" fill="none"><path d="M24 4C13 4 4 11.8 4 21.5c0 5.5 3.1 10.4 7.9 13.7-.3 1.2-1.1 4.3-1.3 5 0 0-.1.3.2.4.2.1.5 0 .5 0 .7-.1 8.5-5.6 9.8-6.5.9.1 1.9.2 2.9.2 11 0 20-7.8 20-17.3S35 4 24 4z" fill="white"/></svg>
-        <span>ติดต่อ LINE</span>
+        <span data-lang="th" class="active">ติดต่อ LINE</span>
+        <span data-lang="la">ຕິດຕໍ່ LINE</span>
+        <span data-lang="en">Chat on LINE</span>
     </a>
 
     <nav>
         <div class="nav-logo">VITH <span>HUB</span></div>
         <div class="nav-cta">
+            <span class="nav-slots">🔴 
+                <span data-lang="th" class="active">เหลือที่ว่าง 19 บูธ</span>
+                <span data-lang="la">ຍັງເຫຼືອ 19 ທີ່</span>
+                <span data-lang="en">19 slots left</span>
+            </span>
             <div class="lang-switcher">
                 <button class="lang-btn active" onclick="setLang('th')">TH</button>
                 <button class="lang-btn" onclick="setLang('la')">LAO</button>
                 <button class="lang-btn" onclick="setLang('en')">EN</button>
             </div>
-            <a href="#contact" class="btn-nav">จองบูธ</a>
+            <a href="#contact" class="btn-nav">
+                <span data-lang="th" class="active">จองบูธ</span>
+                <span data-lang="la">ຈອງບູດ</span>
+                <span data-lang="en">Book Now</span>
+            </a>
         </div>
     </nav>
 
@@ -32,18 +46,12 @@
         <div class="hero-bg"></div>
         <div class="hero-grid"></div>
         <div class="hero-inner">
-            <div class="hero-badge reveal"><span class="badge-dot"></span><span>เปิดรับสมัคร มีนาคม 2026</span></div>
-            <h1 class="hero-title reveal">
-                <span class="sub">THE TRADE BRIDGE</span>VITH <span class="amp">×</span> BIG C
-            </h1>
-            <p class="hero-desc reveal">ยกสินค้าไทยไปขายกลางห้างใหญ่ที่สุดในลาว <strong>ไม่ต้องส่งทีมไปเอง</strong> เราจัดการให้ครบ</p>
+            <div class="hero-badge reveal"><span class="badge-dot"></span><span data-lang="th" class="active">เปิดรับสมัคร มีนาคม 2026</span><span data-lang="la">ເປີດຮັບສະໝັກ ມີນາ 2026</span></div>
+            <h1 class="hero-title reveal"><span class="sub">THE TRADE BRIDGE</span>VITH <span class="amp">×</span> BIG C</h1>
+            <p class="hero-desc reveal"><span data-lang="th" class="active">ยกสินค้าไทยไปขายกลางห้างใหญ่ที่สุดในลาว <strong>ไม่ต้องส่งทีมไปเอง</strong> เราจัดการให้ครบ</span><span data-lang="la">ຍົກສິນຄ້າໄທໄປຂາຍກາງຫ້າງໃຫຍ່ທີ່ສຸດໃນລາວ <strong>ບໍ່ຕ້ອງສົ່ງທີມໄປເອງ</strong></span></p>
             <div class="hero-btns reveal">
-                <a href="#packages" class="btn-primary">ดูแพ็กเกจ</a>
-                <a href="#phases" class="btn-secondary">แผนงาน 2 Phase</a>
-            </div>
-            <div class="hero-stats reveal">
-                <div class="stat"><div class="stat-num">25<span>+</span></div><div class="stat-label">บูธพร้อมขาย</div></div>
-                <div class="stat"><div class="stat-num">100<span>%</span></div><div class="stat-label">ถูกกฎหมาย</div></div>
+                <a href="#packages" class="btn-primary"><span data-lang="th" class="active">ดูแพ็กเกจ</span><span data-lang="la">ແພັກເກັດ</span></a>
+                <a href="#phases" class="btn-secondary"><span data-lang="th" class="active">แผนงาน 2 Phase</span><span data-lang="la">ແຜນງານ 2 Phase</span></a>
             </div>
         </div>
     </section>
@@ -53,40 +61,9 @@
             <div class="reveal"><h2 class="section-title">จุดแข็งที่คู่แข่งทำไม่ได้</h2></div>
             <div class="moat-grid reveal">
                 <div class="moat-card">🏢 <h3>Prime Location</h3><p>ชั้น 1 Big C เวียงจันทน์ ติดทางเข้าหลัก</p></div>
-                <div class="moat-card">🚛 <h3>Logistics Master</h3><p>ส่งสินค้าจากไทยถึงบูธผ่าน Royal Bridge 99</p></div>
+                <div class="moat-card">🚛 <h3>Logistics Master</h3><p>ขนส่งผ่าน Royal Bridge 99 จากไทยถึงบูธ</p></div>
                 <div class="moat-card">👥 <h3>One-Stop Service</h3><p>มีพนักงานช่วยขาย ไม่ต้องส่งคนจากไทยมาเอง</p></div>
                 <div class="moat-card">🎯 <h3>Organic Traffic</h3><p>ดึงคนด้วย Skill Center ศูนย์ข้อมูลแรงงาน</p></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="phases" class="section-pad">
-        <div class="section-center">
-            <div class="reveal"><h2 class="section-title">แผนงาน 2 Phase</h2></div>
-            <div class="phases-wrap reveal">
-                <div class="phase-card">
-                    <div class="phase-num">01</div>
-                    <span class="phase-tag">Phase 1</span>
-                    <h3>Thank You Fair</h3>
-                    <p>มีนาคม 2026 (5 วัน)</p>
-                </div>
-                <div class="phase-card featured">
-                    <div class="phase-num">02</div>
-                    <span class="phase-tag">Phase 2</span>
-                    <h3>Grand Opening</h3>
-                    <p>พฤษภาคม 2026 (7 วัน)</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="packages" class="section-pad">
-        <div class="section-center">
-            <div class="reveal"><h2 class="section-title">Packages</h2></div>
-            <div class="pkg-grid reveal">
-                <div class="pkg-card"><div class="pkg-tier">Starter</div><div class="pkg-price">฿8,500</div><a href="#contact" class="pkg-btn-outline">เลือก</a></div>
-                <div class="pkg-card recommended"><div class="pkg-rec-badge">แนะนำ</div><div class="pkg-tier">Business</div><div class="pkg-price">฿12,000</div><a href="#contact" class="pkg-btn-fill">จองด่วน</a></div>
-                <div class="pkg-card"><div class="pkg-tier">Partner+</div><div class="pkg-price">฿15,000+</div><a href="#contact" class="pkg-btn-outline">ปรึกษาทีม</a></div>
             </div>
         </div>
     </section>
@@ -103,8 +80,6 @@
             </div>
         </div>
     </section>
-
-    <footer><p>© 2026 VITH Hub × Big C Vientiane</p></footer>
 
     <script src="script.js"></script>
 </body>
