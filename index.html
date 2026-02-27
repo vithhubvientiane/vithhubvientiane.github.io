@@ -1,74 +1,448 @@
 <!DOCTYPE html>
 <html lang="th" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VITH Hub × Big C Vientiane | สะพานการค้าไทย-ลาว</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Sarabun:wght@300;400;600;700;800&family=Noto+Sans+Lao:wght@400;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VITH Hub × Big C Vientiane | สะพานการค้าไทย-ลาว</title>
+<meta name="description" content="ยกสินค้าไทยไปขายกลางห้างใหญ่ที่สุดในลาว ไม่ต้องส่งทีมไปเอง — VITH Hub × Big C Vientiane 2026">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Sarabun:wght@300;400;600;700;800&family=Noto+Sans+Lao:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="progress-bar" id="progressBar"></div>
 
-    <nav>
-        <div class="nav-logo">VITH <span>HUB</span></div>
-        <div class="lang-switcher">
-            <button class="lang-btn active" onclick="setLang('th')">TH</button>
-            <button class="lang-btn" onclick="setLang('la')">LAO</button>
-            <button class="lang-btn" onclick="setLang('en')">EN</button>
-        </div>
-    </nav>
+<!-- Progress Bar -->
+<div class="progress-bar" id="progressBar"></div>
 
-    <section id="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-inner">
-            <div class="hero-badge reveal">
-                <span data-lang="th" class="active">🔴 เปิดรับสมัคร มีนาคม 2026</span>
-                <span data-lang="la">🔴 ເປີດຮັບສະໝັກ ມີນາ 2026</span>
-            </div>
-            <h1 class="hero-title reveal">
-                <span class="sub">THE TRADE BRIDGE</span>VITH <span class="amp">×</span> BIG C
-            </h1>
-            <p class="hero-desc reveal">
-                <span data-lang="th" class="active">ยกสินค้าไทยไปขายกลางห้างใหญ่ที่สุดในลาว <strong>ไม่ต้องส่งทีมไปเอง</strong></span>
-                <span data-lang="la">ຍົກສິນຄ້າໄທໄປຂາຍກາງຫ້າງໃຫຍ່ທີ່ສຸດໃນລາວ <strong>ບໍ່ຕ້ອງສົ່ງທີມໄປເອງ</strong></span>
-            </p>
-            <div class="hero-btns reveal">
-                <a href="#packages" class="btn-primary">ดูแพ็กเกจ</a>
-            </div>
-        </div>
-    </section>
+<!-- Toast -->
+<div class="toast" id="toast">
+  <div class="toast-title">✅ ส่งข้อมูลสำเร็จ!</div>
+  <div class="toast-msg">ทีมงานจะติดต่อกลับภายใน 24 ชั่วโมงครับ</div>
+</div>
 
-    <section id="why" class="section-pad">
-        <div class="section-center">
-            <h2 class="section-title reveal">ทำไมต้อง <span>VITH Hub?</span></h2>
-            <div class="moat-grid reveal">
-                <div class="moat-card">🏢 <h3>Prime Location</h3><p>ชั้น 1 Big C เวียงจันทน์ ติดทางเข้าหลัก</p></div>
-                <div class="moat-card">🚛 <h3>Logistics Master</h3><p>ส่งสินค้าจากไทยถึงบูธผ่าน Royal Bridge 99</p></div>
-                <div class="moat-card">👥 <h3>One-Stop Service</h3><p>มีพนักงานช่วยขาย ไม่ต้องส่งคนจากไทยมาเอง</p></div>
-                <div class="moat-card">🎯 <h3>Organic Traffic</h3><p>ดึงคนลาวด้วยศูนย์ข้อมูลแรงงาน Skill Center</p></div>
-            </div>
-        </div>
-    </section>
+<!-- LINE Float -->
+<a class="line-float" href="https://line.me/ti/p/@cef8930n" target="_blank">
+  <svg width="18" height="18" viewBox="0 0 48 48" fill="none">
+    <path d="M24 4C13 4 4 11.8 4 21.5c0 5.5 3.1 10.4 7.9 13.7-.3 1.2-1.1 4.3-1.3 5 0 0-.1.3.2.4.2.1.5 0 .5 0 .7-.1 8.5-5.6 9.8-6.5.9.1 1.9.2 2.9.2 11 0 20-7.8 20-17.3S35 4 24 4z" fill="white"/>
+  </svg>
+  <span data-lang="th" class="active">ติดต่อ LINE</span>
+  <span data-lang="la">ຕິດຕໍ່ LINE</span>
+  <span data-lang="en">Chat on LINE</span>
+</a>
 
-    <section id="contact" class="section-pad">
-        <div class="section-center">
-            <div class="moat-card reveal" style="max-width: 600px; margin: 0 auto; text-align: center;">
-                <h2 class="section-title" style="font-size: 2.5rem; margin-bottom: 1.5rem;">จองบูธ / ขอ Proposal</h2>
-                <div id="leadForm">
-                    <input type="text" id="f-name" placeholder="ชื่อ / บริษัท" style="width:100%; padding:15px; margin-bottom:15px; background:rgba(255,255,255,0.05); border:1px solid var(--border); color:#fff; border-radius:10px;">
-                    <input type="text" id="f-contact" placeholder="LINE ID หรือเบอร์โทร" style="width:100%; padding:15px; margin-bottom:15px; background:rgba(255,255,255,0.05); border:1px solid var(--border); color:#fff; border-radius:10px;">
-                    <input type="text" id="f-product" placeholder="สินค้าของคุณ" style="width:100%; padding:15px; margin-bottom:20px; background:rgba(255,255,255,0.05); border:1px solid var(--border); color:#fff; border-radius:10px;">
-                    <button onclick="submitLead()" class="btn-primary" style="width:100%;">ส่งข้อมูลสมัคร</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <a class="line-float" href="https://line.me/ti/p/YOUR_LINE_ID" target="_blank">
-        <span>ติดต่อ LINE</span>
+<!-- ─── NAV ─── -->
+<nav>
+  <div class="nav-logo">VITH <span>HUB</span></div>
+  <div class="nav-cta">
+    <span class="nav-slots">🔴
+      <span data-lang="th" class="active">เหลือที่ว่าง 19 บูธ</span>
+      <span data-lang="la">ຍັງເຫຼືອ 19 ທີ່</span>
+      <span data-lang="en">19 slots left</span>
+    </span>
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('th')">TH</button>
+      <button class="lang-btn" onclick="setLang('la')">LAO</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+    <a href="#contact" class="btn-nav">
+      <span data-lang="th" class="active">จองบูธ</span>
+      <span data-lang="la">ຈອງບູດ</span>
+      <span data-lang="en">Book Now</span>
     </a>
+  </div>
+</nav>
 
-    <script src="script.js"></script>
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      <span data-lang="th" class="active">เปิดรับสมัคร · มีนาคม 2026 · เวียงจันทน์</span>
+      <span data-lang="la">ເປີດຮັບສະໝັກ · ມີນາ 2026 · ວຽງຈັນ</span>
+      <span data-lang="en">Now Open · March 2026 · Vientiane</span>
+    </div>
+
+    <h1 class="hero-title">
+      <span class="sub">
+        <span data-lang="th" class="active">สะพานการค้า</span>
+        <span data-lang="la">ຂົວການຄ້າ</span>
+        <span data-lang="en">The Trade Bridge</span>
+      </span>
+      VITH <span class="amp">×</span> BIG C
+    </h1>
+
+    <div class="hero-divider"><span>Vientiane · EST. 2026</span></div>
+
+    <p class="hero-desc">
+      <span data-lang="th" class="active">ยกสินค้าไทยไปขายกลางห้างใหญ่ที่สุดในลาว <strong>ไม่ต้องส่งทีมไปเอง</strong> เราจัดการขนส่ง บูธ และพนักงานให้ครบ</span>
+      <span data-lang="la">ຍົກສິນຄ້າໄທໄປຂາຍກາງຫ້າງໃຫຍ່ທີ່ສຸດໃນລາວ <strong>ບໍ່ຕ້ອງສົ່ງທີມໄປເອງ</strong> ພວກເຮົາຈັດການທຸກຢ່າງ</span>
+      <span data-lang="en">Place your Thai brand at Laos' largest mall. <strong>No need to send your own team</strong> — we handle logistics, booths, and staff end-to-end.</span>
+    </p>
+
+    <div class="hero-btns">
+      <a href="#packages" class="btn-primary">
+        <span data-lang="th" class="active">ดูแพ็กเกจและราคา</span>
+        <span data-lang="la">ເບິ່ງແພັກເກັດ</span>
+        <span data-lang="en">View Packages</span>
+      </a>
+      <a href="#phases" class="btn-secondary">
+        <span data-lang="th" class="active">แผนงานทั้ง 2 Phase</span>
+        <span data-lang="la">ແຜນງານ 2 Phase</span>
+        <span data-lang="en">See Roadmap</span>
+      </a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">25<span>+</span></div>
+        <div class="stat-label">
+          <span data-lang="th" class="active">บูธพร้อมขาย</span>
+          <span data-lang="la">ບູດທີ່ພ້ອມ</span>
+          <span data-lang="en">Booths Available</span>
+        </div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">2<span>×</span></div>
+        <div class="stat-label">
+          <span data-lang="th" class="active">Phase มีนา + พ.ค.</span>
+          <span data-lang="la">Phase ມີນາ + ພ.ພ.</span>
+          <span data-lang="en">Phase Mar + May</span>
+        </div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">100<span>%</span></div>
+        <div class="stat-label">
+          <span data-lang="th" class="active">ถูกกฎหมาย</span>
+          <span data-lang="la">ຖືກກົດໝາຍ</span>
+          <span data-lang="en">Fully Legal</span>
+        </div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">0<span> THB</span></div>
+        <div class="stat-label">
+          <span data-lang="th" class="active">ค่าพื้นที่จาก Big C</span>
+          <span data-lang="la">ຄ່າພື້ນທີ່ Big C</span>
+          <span data-lang="en">Big C venue fee</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── WHY ─── -->
+<section id="why" class="section-pad">
+  <div class="section-center">
+    <div class="reveal">
+      <div class="section-eyebrow">
+        <span data-lang="th" class="active">ทำไมต้อง VITH Hub</span>
+        <span data-lang="la">ເປັນຫຍັງຕ້ອງ VITH Hub</span>
+        <span data-lang="en">Why VITH Hub</span>
+      </div>
+      <h2 class="section-title">
+        <span data-lang="th" class="active">จุดแข็งที่คู่แข่งทำไม่ได้</span>
+        <span data-lang="la">ຈຸດແຂງທີ່ຄູ່ແຂ່ງທຳບໍ່ໄດ້</span>
+        <span data-lang="en">Advantages No One Can Copy</span>
+      </h2>
+    </div>
+    <div class="moat-grid reveal">
+      <div class="moat-card">
+        <div class="moat-icon">🏢</div>
+        <div class="moat-title">Prime Location · Indoor</div>
+        <p class="moat-desc">
+          <span data-lang="th" class="active">ชั้น 1 Big C เวียงจันทน์ ติดทางเข้าหลัก ไม่ร้อน ไม่กลัวฝน ทำเลที่ดีที่สุดในลาว</span>
+          <span data-lang="la">ຊັ້ນ 1 Big C ວຽງຈັນ ຕິດທາງເຂົ້າຫຼັກ ບໍ່ຮ້ອນ ບໍ່ຢ້ານຝົນ</span>
+          <span data-lang="en">Floor 1 of Big C Vientiane, adjacent to the main entrance — the most accessible indoor venue in Laos.</span>
+        </p>
+        <span class="moat-tag">Free Venue from Big C</span>
+      </div>
+      <div class="moat-card">
+        <div class="moat-icon">🚛</div>
+        <div class="moat-title">Logistics Master</div>
+        <p class="moat-desc">
+          <span data-lang="th" class="active">คุมการขนส่งเองผ่าน Royal Bridge 99 ขนสินค้าจากไทยถึงบูธแบบไร้รอยต่อ ไม่ต้องยุ่งกับพิธีศุลกากรเอง</span>
+          <span data-lang="la">ຄຸມການຂົນສົ່ງຜ່ານ Royal Bridge 99 ສ່ງສິນຄ້າຈາກໄທຮອດບູດ</span>
+          <span data-lang="en">We own the logistics chain via Royal Bridge 99. Seamless delivery — no customs hassle.</span>
+        </p>
+        <span class="moat-tag">Royal Bridge 99</span>
+      </div>
+      <div class="moat-card">
+        <div class="moat-icon">👥</div>
+        <div class="moat-title">One-Stop Service</div>
+        <p class="moat-desc">
+          <span data-lang="th" class="active">มีพนักงานช่วยขายและเฝ้าบูธให้ ผู้ประกอบการไม่ต้องส่งคนจากไทยมาเอง ลดต้นทุนมหาศาล</span>
+          <span data-lang="la">ມີພະນັກງານຊ່ວຍຂາຍ ບໍ່ຕ້ອງສົ່ງຄົນຈາກໄທ</span>
+          <span data-lang="en">Dedicated booth staff included. Thai brands don't need to send anyone.</span>
+        </p>
+        <span class="moat-tag">Staff Included</span>
+      </div>
+      <div class="moat-card">
+        <div class="moat-icon">🎯</div>
+        <div class="moat-title">Skill Center = Traffic Magnet</div>
+        <p class="moat-desc">
+          <span data-lang="th" class="active">ศูนย์ข้อมูลไปทำงานไทยดึงคนลาวเข้าห้างฟรี Traffic สูงกว่างาน Exhibition ทั่วไปหลายเท่า</span>
+          <span data-lang="la">ສູນຂໍ້ມູນໄປເຮັດວຽກໄທດຶງຄົນລາວຟຣີ</span>
+          <span data-lang="en">Thai labor info center draws massive organic foot traffic — far above standard exhibitions.</span>
+        </p>
+        <span class="moat-tag">Organic Traffic</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PHASES ─── -->
+<section id="phases" class="section-pad">
+  <div class="section-center">
+    <div class="reveal">
+      <div class="section-eyebrow">Roadmap</div>
+      <h2 class="section-title">
+        <span data-lang="th" class="active">แผนงาน 2 Phase</span>
+        <span data-lang="la">ແຜນງານ 2 Phase</span>
+        <span data-lang="en">2-Phase Launch Plan</span>
+      </h2>
+      <p class="section-sub">
+        <span data-lang="th" class="active">เริ่มเล็กเพื่อพิสูจน์ระบบ แล้วระเบิดใหญ่ในรอบ Grand Opening</span>
+        <span data-lang="la">ເລີ່ມນ້ອຍ ແລ້ວໃຫຍ່ຂຶ້ນໃນ Grand Opening</span>
+        <span data-lang="en">Start lean to validate, then scale big at Grand Opening.</span>
+      </p>
+    </div>
+    <div class="phases-wrap reveal">
+
+      <div class="phase-card phase-1">
+        <div class="phase-accent"></div>
+        <div class="phase-num">01</div>
+        <span class="phase-tag">Phase 1 · Sandbox</span>
+        <h3 class="phase-title">Thank You Fair</h3>
+        <p class="phase-date">
+          <span data-lang="th" class="active">📅 มีนาคม 2026 · 5 วัน · Big C เวียงจันทน์</span>
+          <span data-lang="la">📅 ມີນາ 2026 · 5 ວັນ · Big C ວຽງຈັນ</span>
+          <span data-lang="en">📅 March 2026 · 5 Days · Big C Vientiane</span>
+        </p>
+        <ul class="phase-items">
+          <li><span data-lang="th" class="active">ทดสอบระบบพื้นที่ & Logistics (Sandbox)</span><span data-lang="la">ທົດສອບລະບົບ & Logistics</span><span data-lang="en">System & logistics sandbox test</span></li>
+          <li><span data-lang="th" class="active">ดึงคนเข้าห้างด้วยโปรโมชั่นสินค้าราคาพิเศษ</span><span data-lang="la">ດຶງຄົນດ້ວຍໂປຣໂມຊັ່ນ</span><span data-lang="en">Drive foot traffic via special deals</span></li>
+          <li><span data-lang="th" class="active">เปิดตัว Skill Center จุดข้อมูลแรงงาน</span><span data-lang="la">ເປີດຕົວ Skill Center</span><span data-lang="en">Launch Skill Center (labor info hub)</span></li>
+          <li><span data-lang="th" class="active">กลุ่มเป้า: ซัพพลายเออร์ Big C + ร้านค้าท้องถิ่น</span><span data-lang="la">ເປົ້າໝາຍ: ຊັບພລາຍ Big C</span><span data-lang="en">Target: Big C suppliers + local shops</span></li>
+        </ul>
+        <div class="phase-profit">
+          <span class="phase-profit-label"><span data-lang="th" class="active">คืนทุนภายใน</span><span data-lang="la">ຄືນທຶນ</span><span data-lang="en">Break-even in</span></span>
+          <span class="phase-profit-num">2–3</span>
+          <span style="font-size:0.8rem;color:var(--muted)"><span data-lang="th" class="active">วัน · กำไรที่เหลืออีก 2 วัน</span><span data-lang="en">days · 2 days pure profit</span></span>
+        </div>
+      </div>
+
+      <div class="phase-card phase-2 featured">
+        <div class="phase-accent"></div>
+        <div class="phase-num">02</div>
+        <span class="phase-tag">Phase 2 · Grand Opening</span>
+        <h3 class="phase-title">VITH Hub Launch</h3>
+        <p class="phase-date">
+          <span data-lang="th" class="active">📅 พฤษภาคม 2026 · 7 วัน · งานระดับนานาชาติ</span>
+          <span data-lang="la">📅 ພ.ພ. 2026 · 7 ວັນ · ງານລະດັບສາກົນ</span>
+          <span data-lang="en">📅 May 2026 · 7 Days · International scale</span>
+        </p>
+        <ul class="phase-items">
+          <li><span data-lang="th" class="active">เปิดตัว Hub อย่างเป็นทางการ ระดับนานาชาติ</span><span data-lang="la">ເປີດຕົວ Hub ຢ່າງເປັນທາງການ</span><span data-lang="en">Official international-scale Hub launch</span></li>
+          <li><span data-lang="th" class="active">สมาคมแฟรนไชส์ + SME ภาคเหนือ</span><span data-lang="la">ສະມາຄົມແຟຣນໄຊ + SME</span><span data-lang="en">Franchise associations + Northern SMEs</span></li>
+          <li><span data-lang="th" class="active">เครื่องจักร B2B + Investor Group</span><span data-lang="la">ເຄື່ອງຈັກ B2B + Investor</span><span data-lang="en">B2B machinery + Investor groups</span></li>
+          <li><span data-lang="th" class="active">Influencer ลาว + TikTok/FB Campaign</span><span data-lang="la">Influencer ລາວ + TikTok/FB</span><span data-lang="en">Lao Influencers + TikTok/FB Ads</span></li>
+        </ul>
+        <div class="phase-profit">
+          <span class="phase-profit-label"><span data-lang="th" class="active">คาดการณ์ผู้เข้าร่วม</span><span data-lang="la">ຄາດການຜູ້ເຂົ້າ</span><span data-lang="en">Expected Visitors</span></span>
+          <span class="phase-profit-num">10K+</span>
+          <span style="font-size:0.8rem;color:var(--muted)"><span data-lang="th" class="active">คน · 7 วัน · นานาชาติ</span><span data-lang="en">people · 7 days</span></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── PACKAGES ─── -->
+<section id="packages" class="section-pad">
+  <div class="section-center">
+    <div class="reveal">
+      <div class="section-eyebrow">Packages</div>
+      <h2 class="section-title">
+        <span data-lang="th" class="active">เลือกแพ็กเกจที่เหมาะกับธุรกิจคุณ</span>
+        <span data-lang="la">ເລືອກແພັກເກັດທີ່ເຫມາະ</span>
+        <span data-lang="en">Choose Your Package</span>
+      </h2>
+      <p class="section-sub">
+        <span data-lang="th" class="active">ราคาออล-อิน ไม่มีค่าใช้จ่ายแอบแฝง รวมขนส่ง + บูธ + พนักงาน</span>
+        <span data-lang="la">ລາຄາ All-in ລວມຂົນສົ່ງ + ບູດ + ພະນັກງານ</span>
+        <span data-lang="en">All-in pricing. No hidden fees. Includes shipping + booth + staff.</span>
+      </p>
+    </div>
+    <div class="pkg-grid reveal">
+
+      <div class="pkg-card">
+        <div class="pkg-tier">Starter</div>
+        <div class="pkg-price">฿8,500</div>
+        <div class="pkg-price-sub"><span data-lang="th" class="active">ต่อ 5 วัน (Phase 1)</span><span data-lang="la">ຕໍ່ 5 ວັນ</span><span data-lang="en">per 5-day event</span></div>
+        <ul class="pkg-features">
+          <li><span class="feat-check">✦</span><span data-lang="th" class="active">บูธ Kiosk มาตรฐาน (ชั้น 1 Indoor)</span><span data-lang="la">ບູດ Kiosk ມາດຕະຖານ</span><span data-lang="en">Standard Kiosk (Floor 1 Indoor)</span></li>
+          <li><span class="feat-check">✦</span><span data-lang="th" class="active">ขนส่งไทย → ลาว (Royal Bridge 99)</span><span data-lang="la">ຂົນສົ່ງ ໄທ → ລາວ</span><span data-lang="en">Thai→Laos logistics (Royal Bridge 99)</span></li>
+          <li><span class="feat-check">✦</span><span data-lang="th" class="active">พนักงานเฝ้าบูธรวม (shared staff)</span><span data-lang="la">ພະນັກງານລວມ</span><span data-lang="en">Shared booth staff</span></li>
+          <li><span class="feat-check">✦</span><span data-lang="th" class="active">รายงานยอดขายหลังงาน</span><span data-lang="la">ລາຍງານຍອດຂາຍ</span><span data-lang="en">Post-event sales report</span></li>
+        </ul>
+        <a href="#contact" class="pkg-btn pkg-btn-outline"><span data-lang="th" class="active">เลือกแพ็กเกจนี้</span><span data-lang="la">ເລືອກ</span><span data-lang="en">Select</span></a>
+      </div>
+
+      <div class="pkg-card recommended">
+        <div class="pkg-rec-badge"><span data-lang="th" class="active">แนะนำ</span><span data-lang="la">ແນະນຳ</span><span data-lang="en">Best Value</span></div>
+        <div class="pkg-tier" style="color:var(--red)">Business</div>
+        <div class="pkg-price" style="color:var(--red)">฿12,000</div>
+        <div class="pkg-price-sub"><span data-lang="th" class="active">ต่อ 5 วัน · ทำเล Prime Zone</span><span data-lang="la">ຕໍ່ 5 ວັນ · Prime Zone</span><span data-lang="en">per 5-day · Prime Zone</span></div>
+        <ul class="pkg-features">
+          <li><span class="feat-check">✦</span><span data-lang="th" class="active"><strong>ทำเล Prime Zone</strong> — ใกล้ทางเข้า หนาแน่นที่สุด</span><span data-lang="la"><strong>Prime Zone</strong> — ໃກ້ທາງເຂົ້າ</span><span data-lang="en"><strong>Prime Zone</strong> — highest foot traffic</span></li>
+          <li><span class="feat-check">✦</span><span data-lang="th" class="active">ทุกอย่างใน Starter +</span><span data-lang="la">ທຸກຢ່າງໃນ Starter +</span><span data-lang="en">Everything in Starter, plus:</span></li>
+          <li><span class="feat-check">✦</span><span data-lang="th" class="active">พนักงานช่วยขายส่วนตัว 1 คน</span><span data-lang="la">ພະນັກງານສ່ວນຕົວ 1 ຄົນ</span><span data-lang="en">1 dedicated private sales staff</span></li>
+          <li><span class="feat-check">✦</span><span data-lang="th" class="active">Influencer ลาว รีวิว 1 ครั้ง</span><span data-lang="la">Influencer ລາວ 1 ລີວິວ</span><span data-lang="en">1 Lao Influencer review post</span></li>
+          <li><span class="feat-check">✦</span><span data-lang="th" class="active">TikTok/FB Ads เฉพาะแบรนด์คุณ</span><span data-lang="la">TikTok/FB Ads ສະເພາະ</span><span data-lang="en">Branded TikTok & FB ad push</span></li>
+        </ul>
+        <a href="#contact" class="pkg-btn pkg-btn-fill"><span data-lang="th" class="active">จองด่วน — ที่เหลือน้อย</span><span data-lang="la">ຈອງດ່ວນ</span><span data-lang="en">Book Now — Limited Slots</span></a>
+      </div>
+
+      <div class="pkg-card">
+        <div class="pkg-tier">Partner+</div>
+        <div class="pkg-price">฿15,000<span style="font-size:1.2rem">+</span></div>
+        <div class="pkg-price-sub"><span data-lang="th" class="active">พาร์ทเนอร์ถาวร · Hub ระยะยาว</span><span data-lang="la">ພາດເນີ ຖາວອນ</span><span data-lang="en">Permanent Hub Partner</span></div>
+        <ul class="pkg-features">
+          <li><span class="feat-check">✦</span><span data-lang="th" class="active">สิทธิ์ขายใน VITH Hub ถาวรหลังงาน</span><span data-lang="la">ສິດວາງຂາຍໃນ Hub ຖາວອນ</span><span data-lang="en">Permanent listing in VITH Hub</span></li>
+          <li><span class="feat-check">✦</span><span data-lang="th" class="active">ทุกอย่างใน Business +</span><span data-lang="la">ທຸກຢ່າງໃນ Business +</span><span data-lang="en">Everything in Business, plus:</span></li>
+          <li><span class="feat-check">✦</span><span data-lang="th" class="active">Banner ขนาดใหญ่รอบงาน</span><span data-lang="la">ປ້າຍ Banner ໃຫຍ່</span><span data-lang="en">Large venue-wide banners</span></li>
+          <li><span class="feat-check">✦</span><span data-lang="th" class="active">เชื่อมต่อเครือข่ายตัวแทนทั่วลาว</span><span data-lang="la">ຕົວແທນທົ່ວລາວ</span><span data-lang="en">Nationwide Laos distribution network</span></li>
+          <li><span class="feat-check">✦</span><span data-lang="th" class="active">เข้าร่วม Phase 2 Grand Opening อัตโนมัติ</span><span data-lang="la">Grand Opening ອັດຕະໂນມັດ</span><span data-lang="en">Auto-included in Grand Opening</span></li>
+        </ul>
+        <a href="#contact" class="pkg-btn pkg-btn-outline"><span data-lang="th" class="active">ปรึกษาทีมงาน</span><span data-lang="la">ປຶກສາທີມ</span><span data-lang="en">Consult Our Team</span></a>
+      </div>
+
+    </div>
+
+    <div class="roi-strip reveal">
+      <div><div class="roi-label"><span data-lang="th" class="active">ตัวอย่าง ROI</span><span data-lang="en">Example ROI</span></div><div class="roi-val">5 วัน</div><div class="roi-desc"><span data-lang="th" class="active">ระยะเวลาการขาย</span><span data-lang="en">Selling period</span></div></div>
+      <div><div class="roi-label">Package</div><div class="roi-val">฿12K</div><div class="roi-desc">Business tier</div></div>
+      <div><div class="roi-label"><span data-lang="th" class="active">ขายต่อวัน (ประมาณ)</span><span data-lang="en">Daily sales (est.)</span></div><div class="roi-val">฿5K+</div><div class="roi-desc"><span data-lang="th" class="active">ขึ้นกับสินค้า</span><span data-lang="en">Product-dependent</span></div></div>
+      <div><div class="roi-label"><span data-lang="th" class="active">คืนทุนใน</span><span data-lang="en">Break-even in</span></div><div class="roi-val" style="color:var(--gold)">2–3 วัน</div><div class="roi-desc"><span data-lang="th" class="active">กำไรตลอด 5 วัน</span><span data-lang="en">Profit the rest</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TEAM ─── -->
+<section id="team" class="section-pad">
+  <div class="section-center">
+    <div class="reveal">
+      <div class="section-eyebrow">Team</div>
+      <h2 class="section-title">
+        <span data-lang="th" class="active">ทีมผู้เชี่ยวชาญครบวงจร</span>
+        <span data-lang="la">ທີມຜູ້ຊ່ຽວຊານ</span>
+        <span data-lang="en">Full Expert Team</span>
+      </h2>
+    </div>
+    <div class="team-grid reveal">
+      <div class="team-card"><div class="team-icon">⚙️</div><div class="team-dept">Operations</div><div class="team-name"><span data-lang="th" class="active">ปฏิบัติการ</span><span data-lang="la">ປະຕິບັດການ</span><span data-lang="en">Operations</span></div><div class="team-resp"><span data-lang="th" class="active">จัดการพื้นที่ชั้น 1 ระบบไฟ ความสะอาด และการติดตั้งบูธ</span><span data-lang="la">ຈັດການພື້ນທີ່ ຊັ້ນ 1</span><span data-lang="en">Venue, lighting, booth install & cleanliness</span></div></div>
+      <div class="team-card"><div class="team-icon">🚛</div><div class="team-dept">Logistics</div><div class="team-name"><span data-lang="th" class="active">โลจิสติกส์</span><span data-lang="la">ໂລຈິສຕິກ</span><span data-lang="en">Logistics</span></div><div class="team-resp"><span data-lang="th" class="active">วางแผนรับสินค้าจากไทย เดินรถขนส่ง คลังสินค้าหน้างาน</span><span data-lang="la">ຮັບສິນຄ້າຈາກໄທ ຄລັງສິນຄ້າ</span><span data-lang="en">Thai pickup, transport routing, on-site warehouse</span></div></div>
+      <div class="team-card"><div class="team-icon">🤝</div><div class="team-dept">Sales & RM</div><div class="team-name"><span data-lang="th" class="active">ขายและพาร์ทเนอร์</span><span data-lang="la">ຂາຍ & ພາດເນີ</span><span data-lang="en">Sales & Partners</span></div><div class="team-resp"><span data-lang="th" class="active">ดิวสมาคมแฟรนไชส์ กลุ่ม SME ภาคเหนือ และซัพพลายเออร์</span><span data-lang="la">ດີວ ສະມາຄົມ SME</span><span data-lang="en">Franchise assoc., Northern SMEs, suppliers</span></div></div>
+      <div class="team-card"><div class="team-icon">📣</div><div class="team-dept">Marketing</div><div class="team-name"><span data-lang="th" class="active">การตลาด</span><span data-lang="la">ການຕະຫຼາດ</span><span data-lang="en">Marketing</span></div><div class="team-resp"><span data-lang="th" class="active">TikTok/FB Ads ในลาว ดิว Influencer Flash Sale</span><span data-lang="la">TikTok/FB Ads Influencer</span><span data-lang="en">TikTok/FB Ads, Influencer, Flash Sale</span></div></div>
+      <div class="team-card"><div class="team-icon">🎓</div><div class="team-dept">Skill Center</div><div class="team-name"><span data-lang="th" class="active">พัฒนาแรงงาน</span><span data-lang="la">ພັດທະນາແຮງງານ</span><span data-lang="en">Labour Dev</span></div><div class="team-resp"><span data-lang="th" class="active">ให้ข้อมูลการทำงานไทย เก็บฐานข้อมูลคนหางาน</span><span data-lang="la">ໃຫ້ຂໍ້ມູນ ເຮັດວຽກໄທ</span><span data-lang="en">Thai work info, job-seeker database</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CREDIBILITY ─── -->
+<section id="credibility" class="section-pad">
+  <div class="section-center">
+    <div class="reveal">
+      <div class="section-eyebrow"><span data-lang="th" class="active">ความน่าเชื่อถือ</span><span data-lang="la">ຄວາມໜ້າເຊື່ອຖື</span><span data-lang="en">Credibility</span></div>
+      <h2 class="section-title"><span data-lang="th" class="active">พาร์ทเนอร์ & ตัวเลขจริง</span><span data-lang="la">ພາດເນີ & ຕົວເລກຈິງ</span><span data-lang="en">Partners & Real Numbers</span></h2>
+    </div>
+    <div class="cred-logos reveal">
+      <div class="cred-logo">Big C Vientiane</div>
+      <div class="cred-logo">Royal Bridge 99</div>
+      <div class="cred-logo"><span data-lang="th" class="active">สมาคมแฟรนไชส์ไทย</span><span data-lang="la">ສະມາຄົມແຟຣນໄຊ</span><span data-lang="en">Thai Franchise Assoc.</span></div>
+      <div class="cred-logo"><span data-lang="th" class="active">SME ภาคเหนือ</span><span data-lang="la">SME ພາກເໜືອ</span><span data-lang="en">Northern SME Groups</span></div>
+      <div class="cred-logo"><span data-lang="th" class="active">รัฐบาลลาว (ร่วมมือ)</span><span data-lang="la">ລັດຖະບານລາວ</span><span data-lang="en">Lao Government (Partner)</span></div>
+    </div>
+    <div class="cred-numbers reveal">
+      <div class="cred-num-card"><div class="cred-num-val">30<span>+</span></div><div class="cred-num-label"><span data-lang="th" class="active">บูธพร้อมในงาน Phase 2</span><span data-lang="la">ບູດໃນ Phase 2</span><span data-lang="en">Total booths in Phase 2</span></div></div>
+      <div class="cred-num-card"><div class="cred-num-val">7<span> วัน</span></div><div class="cred-num-label"><span data-lang="th" class="active">Grand Opening นานาชาติ</span><span data-lang="la">Grand Opening</span><span data-lang="en">International Grand Opening</span></div></div>
+      <div class="cred-num-card"><div class="cred-num-val">100<span>%</span></div><div class="cred-num-label"><span data-lang="th" class="active">ถูกกฎหมาย ทั้งไทยและลาว</span><span data-lang="la">ຖືກກົດໝາຍ ໄທ & ລາວ</span><span data-lang="en">Fully compliant — Thai & Lao law</span></div></div>
+      <div class="cred-num-card"><div class="cred-num-val">0<span> บาท</span></div><div class="cred-num-label"><span data-lang="th" class="active">ค่าเช่าพื้นที่จาก Big C (ฟรี!)</span><span data-lang="la">ຄ່າເຊົ່າ Big C (ຟຣີ)</span><span data-lang="en">Big C venue rental (Free!)</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ─── -->
+<section id="contact">
+  <div class="contact-wrap">
+    <div class="contact-left reveal">
+      <div class="section-eyebrow"><span data-lang="th" class="active">ติดต่อสมัคร</span><span data-lang="la">ຕິດຕໍ່ສະໝັກ</span><span data-lang="en">Get In Touch</span></div>
+      <h2 class="section-title"><span data-lang="th" class="active">พร้อมพาคุณข้ามแดน</span><span data-lang="la">ພ້ອມພາທ່ານຂ້າມຊາຍແດນ</span><span data-lang="en">Let's Cross The Border Together</span></h2>
+      <p class="section-sub" style="margin-bottom:2rem;"><span data-lang="th" class="active">ทีมงานจะติดต่อกลับภายใน 24 ชั่วโมง พร้อม Proposal และตำแหน่งบูธที่ดีที่สุดที่ยังว่างอยู่</span><span data-lang="la">ທີມງານຈະຕິດຕໍ່ກັບພາຍໃນ 24 ຊົ່ວໂມງ</span><span data-lang="en">Our team will follow up within 24 hours with a full proposal and best available booth positions.</span></p>
+      <div class="contact-info">
+        <div class="contact-item"><span class="contact-icon">📱</span><span>LINE: @cef8930n <span style="color:var(--muted)">(ตอบเร็วที่สุด)</span></span></div>
+        <div class="contact-item"><span class="contact-icon">📧</span><span>vithhubvientiane@gmail.com</span></div>
+        <div class="contact-item"><span class="contact-icon">📍</span><span>Big C Vientiane, Laos PDR</span></div>
+        <div class="contact-item"><span class="contact-icon">🕐</span><span><span data-lang="th" class="active">ตอบกลับภายใน 24 ชั่วโมง</span><span data-lang="la">ຕອບກັບພາຍໃນ 24 ຊົ່ວໂມງ</span><span data-lang="en">Reply within 24 hours</span></span></div>
+      </div>
+    </div>
+
+    <div class="form-box reveal">
+      <div class="form-title"><span data-lang="th" class="active">จองบูธ / ขอ Proposal</span><span data-lang="la">ຈອງບູດ</span><span data-lang="en">Book a Booth / Get Proposal</span></div>
+      <div class="form-sub"><span data-lang="th" class="active">กรอกข้อมูลด้านล่าง ทีมงานจะส่ง Proposal ให้โดยเร็วที่สุด</span><span data-lang="la">ຕື່ມຂໍ້ມູນ ທີມງານຈະສົ່ງ Proposal</span><span data-lang="en">Fill in the form and we'll send your proposal ASAP.</span></div>
+      <div id="leadForm">
+        <div class="form-group">
+          <label class="form-label"><span data-lang="th" class="active">ชื่อ / บริษัท</span><span data-lang="la">ຊື່ / ບໍລິສັດ</span><span data-lang="en">Name / Company</span></label>
+          <input class="form-input" id="f-name" type="text" placeholder="ชื่อ หรือ ชื่อแบรนด์ของคุณ">
+        </div>
+        <div class="form-group">
+          <label class="form-label"><span data-lang="th" class="active">LINE ID หรือเบอร์โทร</span><span data-lang="la">LINE ID ຫຼື ເບີໂທ</span><span data-lang="en">LINE ID or Phone</span></label>
+          <input class="form-input" id="f-contact" type="text" placeholder="@line_id หรือ 08X-XXX-XXXX">
+        </div>
+        <div class="form-group">
+          <label class="form-label"><span data-lang="th" class="active">สินค้าหรือธุรกิจของคุณ</span><span data-lang="la">ສິນຄ້າ / ທຸລະກິດ</span><span data-lang="en">Your Product / Business</span></label>
+          <input class="form-input" id="f-product" type="text" placeholder="เช่น อาหาร, เครื่องสำอาง, แฟรนไชส์">
+        </div>
+        <div class="form-group">
+          <label class="form-label"><span data-lang="th" class="active">แพ็กเกจที่สนใจ</span><span data-lang="la">ແພັກເກັດ</span><span data-lang="en">Package Interest</span></label>
+          <select class="form-select" id="f-package">
+            <option value="">-- เลือก --</option>
+            <option value="starter">Starter (฿8,500)</option>
+            <option value="business">Business (฿12,000) — แนะนำ</option>
+            <option value="partner">Partner+ (฿15,000+)</option>
+            <option value="unsure">ยังไม่แน่ใจ ขอคุยก่อน</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label"><span data-lang="th" class="active">Phase ที่สนใจ</span><span data-lang="la">Phase ທີ່ສົນໃຈ</span><span data-lang="en">Phase Interest</span></label>
+          <select class="form-select" id="f-phase">
+            <option value="">-- เลือก --</option>
+            <option value="phase1">Phase 1 — มีนาคม 2026</option>
+            <option value="phase2">Phase 2 — พฤษภาคม 2026</option>
+            <option value="both">ทั้ง 2 Phase</option>
+          </select>
+        </div>
+        <button class="form-submit" onclick="submitLead()">
+          <span data-lang="th" class="active">ส่งข้อมูล — รับ Proposal ฟรี</span>
+          <span data-lang="la">ສົ່ງຂໍ້ມູນ — ຮັບ Proposal ຟຣີ</span>
+          <span data-lang="en">Submit — Get Free Proposal</span>
+        </button>
+        <p class="form-note"><span data-lang="th" class="active">🔒 ข้อมูลของคุณปลอดภัย ไม่มีการขายข้อมูลให้บุคคลที่สาม</span><span data-lang="la">🔒 ຂໍ້ມູນຂອງທ່ານປອດໄພ</span><span data-lang="en">🔒 Your info is safe. Never shared with third parties.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-logo">VITH HUB × BIG C VIENTIANE</div>
+  <p>© 2026 VITH Hub. All rights reserved. · เวียงจันทน์, ลาว PDR</p>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
