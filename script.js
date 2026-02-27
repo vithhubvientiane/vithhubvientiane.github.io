@@ -14,16 +14,57 @@ function setLang(lang) {
 }
 
 // ─── SCROLL REVEAL ───
-const observer = new IntersectionObserver(entries => {
+const revealObserver = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.12 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
 // ─── PROGRESS BAR ───
 window.addEventListener('scroll', () => {
   const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
   document.getElementById('progressBar').style.width = pct + '%';
 });
+
+// ─── INTERACTIVE FLOOR PLAN ───
+function showZone(zoneId) {
+  // Hide all zone cards
+  document.querySelectorAll('.zone-card').forEach(card => card.classList.add('hidden'));
+  // Remove active from all hotspots
+  document.querySelectorAll('.hotspot').forEach(h => h.classList.remove('active'));
+
+  // Show selected zone
+  const card = document.getElementById('zone-' + zoneId);
+  if (card) {
+    card.classList.remove('hidden');
+    // Animate in
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(12px)';
+    requestAnimationFrame(() => {
+      card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+      card.style.opacity = '1';
+      card.style.transform = 'translateY(0)';
+    });
+  }
+
+  // Activate clicked hotspot
+  const hotspot = document.querySelector('[data-zone="' + zoneId + '"]');
+  if (hotspot) hotspot.classList.add('active');
+
+  // On mobile: scroll to panel
+  if (window.innerWidth < 800) {
+    const panel = document.querySelector('.floorplan-panel');
+    if (panel) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+// ─── FAQ TOGGLE ───
+function toggleFaq(item) {
+  const isOpen = item.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.faq-item').forEach(f => f.classList.remove('open'));
+  // Open clicked (if it was closed)
+  if (!isOpen) item.classList.add('open');
+}
 
 // ─── LEAD FORM ───
 function submitLead() {
@@ -53,7 +94,7 @@ function submitLead() {
     'Phase: ' + phase
   );
 
-  // Show toast
+  // Toast
   const toast = document.getElementById('toast');
   toast.classList.add('show');
   setTimeout(() => toast.classList.remove('show'), 4000);
@@ -71,8 +112,9 @@ function submitLead() {
     '</div>';
 }
 
-// ─── RESTORE LANG ON LOAD ───
+// ─── INIT ───
 document.addEventListener('DOMContentLoaded', () => {
+  // Restore language
   const saved = localStorage.getItem('vith-lang');
-  if (saved && ['th','la','en'].includes(saved)) setLang(saved);
+  if (saved && ['th', 'la', 'en'].includes(saved)) setLang(saved);
 });
