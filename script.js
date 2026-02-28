@@ -192,10 +192,7 @@ function updatePopupCountdown() {
 updatePopupCountdown();
 setInterval(updatePopupCountdown, 1000);
 
-// Auto-open: แสดงครั้งแรกที่เปิดเว็บ (ถ้ายังไม่เคยปิด session นี้)
+// Auto-open ทุกครั้งที่เปิดเว็บ
 window.addEventListener('load', () => {
-  if (!sessionStorage.getItem('popupSeen')) {
-    setTimeout(openPopup, 1200);
-    sessionStorage.setItem('popupSeen', '1');
-  }
+  setTimeout(openPopup, 1200);
 });
