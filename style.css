@@ -880,3 +880,22 @@ footer { background:#070709; border-top:1px solid var(--border); padding:2.5rem 
   from { opacity: 0; transform: scale(0.7) translateY(8px); }
   to   { opacity: 1; transform: scale(1)   translateY(0); }
 }
+/* แก้ไข Z-Index ให้ Toast อยู่บนสุดเสมอ */
+.toast { z-index: 10000 !important; }
+
+/* ป้องกันการคลุมดำข้อความเวลาเผลอกดรัวๆ ที่ Hotspot หรือปุ่ม */
+.hotspot, .lang-btn, .pkg-toggle-btn, .popup-close-btn {
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* เพิ่มความลื่นไหลในการขยาย Zone Card */
+.zone-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ปรับขนาดฟอนต์จิ๋วใน Floor Plan ให้พอดีมือถือ */
+@media (max-width: 600px) {
+  .hotspot-label { font-size: 0.7rem; }
+  .popup-date-num { line-height: 1; }
+}
