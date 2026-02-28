@@ -47,11 +47,10 @@ function showZone(zoneId) {
     });
     // Scroll panel into view on mobile
     if (window.innerWidth < 800) {
-      card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
+      card.scrollIntoView({ behavior: 'smooth', block: 'center' }); 
   }
 
-  // Activate hotspot
+  // Activate hotspo
   const hotspot = document.querySelector('[data-zone="' + zoneId + '"]');
   if (hotspot) hotspot.classList.add('active');
 }
