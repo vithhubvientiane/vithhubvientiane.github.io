@@ -863,5 +863,93 @@
 </footer>
 
 <script src="script.js"></script>
+
+<!-- ─── POPUP: VITH × BIG C · ขอบใจเด้อ 2026 ─── -->
+<div class="popup-overlay" id="popupOverlay" onclick="handlePopupOverlayClick(event)">
+  <div class="popup-card" id="popupCard">
+
+    <div class="popup-bg-layer"></div>
+    <div class="popup-noise-layer"></div>
+    <button class="popup-close-btn" onclick="closePopup()">✕</button>
+
+    <div class="popup-inner">
+
+      <!-- LEFT: DATE -->
+      <div class="popup-left">
+        <div>
+          <div class="popup-eyebrow">Special Event · 2026</div>
+          <div class="popup-date-num">25–30</div>
+          <span class="popup-date-range">March · มีนาคม · ມີນາ</span>
+          <div class="popup-month-wrap">
+            <span class="popup-month-th">มีนาคม 2026</span>
+            <span class="popup-month-en">MARCH</span>
+          </div>
+        </div>
+        <div class="popup-location-tag">📍 <span>Big C</span> Vientiane, Laos</div>
+      </div>
+
+      <!-- RIGHT: DETAILS -->
+      <div class="popup-right">
+        <div class="popup-event-name">
+          <span class="popup-collab">VITH <span class="popup-x">×</span> BIG C</span>
+          <span class="popup-title-th">ขอบใจเด้อ 2026</span>
+          <span class="popup-title-la">ຂໍໃຈເດີ້ 2026</span>
+          <span class="popup-title-en">Thank You Fair 2026</span>
+        </div>
+
+        <div class="popup-concept-row">
+          <div class="popup-pill popup-pill-shock">ซ็อค</div>
+          <div class="popup-pill popup-pill-taste">ชิม</div>
+          <div class="popup-pill popup-pill-shop">ซอป</div>
+        </div>
+        <div class="popup-concept-sub">
+          <span>ຊ໋ອກ · ຊິມ · ຊ໋ອບ</span>
+          <span class="popup-concept-dot">·</span>
+          <span>Shock · Taste · Shop</span>
+        </div>
+
+        <div class="popup-lang-trio">
+          <div class="popup-lang-item">
+            <span class="popup-lang-flag">🇹🇭</span>
+            <div class="popup-lang-text">สินค้าไทย<br>กลางเวียงจันทน์</div>
+            <span class="popup-lang-sub">25–30 มีนาคม</span>
+          </div>
+          <div class="popup-lang-item">
+            <span class="popup-lang-flag">🇱🇦</span>
+            <div class="popup-lang-text">ສິນຄ້າໄທ<br>ກາງວຽງຈັນ</div>
+            <span class="popup-lang-sub">25–30 ມີນາ</span>
+          </div>
+          <div class="popup-lang-item">
+            <span class="popup-lang-flag">🌏</span>
+            <div class="popup-lang-text">Thai Brands<br>in Vientiane</div>
+            <span class="popup-lang-sub">Mar 25–30</span>
+          </div>
+        </div>
+
+        <div class="popup-cta-row">
+          <a href="#contact" class="popup-btn-book" onclick="closePopup()">🎪 จองบูธเลย</a>
+          <button class="popup-btn-remind" id="popupRemindBtn" onclick="handlePopupRemind()">🔔 แจ้งเตือน</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- COUNTDOWN -->
+    <div class="popup-countdown">
+      <span class="popup-cd-label">นับถอยหลัง · Countdown</span>
+      <div class="popup-cd-timer">
+        <div class="popup-cd-unit"><span class="popup-cd-num" id="popupDays">--</span><span class="popup-cd-unit-label">วัน</span></div>
+        <span class="popup-cd-sep">:</span>
+        <div class="popup-cd-unit"><span class="popup-cd-num" id="popupHours">--</span><span class="popup-cd-unit-label">ชั่วโมง</span></div>
+        <span class="popup-cd-sep">:</span>
+        <div class="popup-cd-unit"><span class="popup-cd-num" id="popupMins">--</span><span class="popup-cd-unit-label">นาที</span></div>
+        <span class="popup-cd-sep">:</span>
+        <div class="popup-cd-unit"><span class="popup-cd-num" id="popupSecs">--</span><span class="popup-cd-unit-label">วินาที</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- ─── /POPUP ─── -->
+
 </body>
 </html>
