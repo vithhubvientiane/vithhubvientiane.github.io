@@ -27,33 +27,30 @@ window.addEventListener('scroll', () => {
 
 // ─── INTERACTIVE FLOOR PLAN ───
 function showZone(zoneId) {
-  // Highlight all cards, dim non-selected
   document.querySelectorAll('.zone-card').forEach(card => {
     card.classList.remove('zone-active');
   });
 
-  // Remove active from hotspots
   document.querySelectorAll('.hotspot').forEach(h => h.classList.remove('active'));
 
-  // Activate selected zone card
   const card = document.getElementById('zone-' + zoneId);
   if (card) {
     card.classList.add('zone-active');
-    // Animate
     card.style.opacity = '0.4';
     requestAnimationFrame(() => {
       card.style.transition = 'opacity 0.25s ease';
       card.style.opacity = '1';
     });
-    // Scroll panel into view on mobile
+    
     if (window.innerWidth < 800) {
-      card.scrollIntoView({ behavior: 'smooth', block: 'center' }); 
+      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
   }
 
-  // Activate hotspo
+  // Activate hotspot
   const hotspot = document.querySelector('[data-zone="' + zoneId + '"]');
   if (hotspot) hotspot.classList.add('active');
-}
+} // 
 
 // ─── FAQ TOGGLE ───
 function toggleFaq(item) {
