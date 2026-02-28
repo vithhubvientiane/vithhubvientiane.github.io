@@ -27,34 +27,33 @@ window.addEventListener('scroll', () => {
 
 // ─── INTERACTIVE FLOOR PLAN ───
 function showZone(zoneId) {
-  // Hide all zone cards
-  document.querySelectorAll('.zone-card').forEach(card => card.classList.add('hidden'));
-  // Remove active from all hotspots
+  // Highlight all cards, dim non-selected
+  document.querySelectorAll('.zone-card').forEach(card => {
+    card.classList.remove('zone-active');
+  });
+
+  // Remove active from hotspots
   document.querySelectorAll('.hotspot').forEach(h => h.classList.remove('active'));
 
-  // Show selected zone
+  // Activate selected zone card
   const card = document.getElementById('zone-' + zoneId);
   if (card) {
-    card.classList.remove('hidden');
-    // Animate in
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(12px)';
+    card.classList.add('zone-active');
+    // Animate
+    card.style.opacity = '0.4';
     requestAnimationFrame(() => {
-      card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+      card.style.transition = 'opacity 0.25s ease';
       card.style.opacity = '1';
-      card.style.transform = 'translateY(0)';
     });
+    // Scroll panel into view on mobile
+    if (window.innerWidth < 800) {
+      card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
   }
 
-  // Activate clicked hotspot
+  // Activate hotspot
   const hotspot = document.querySelector('[data-zone="' + zoneId + '"]');
   if (hotspot) hotspot.classList.add('active');
-
-  // On mobile: scroll to panel
-  if (window.innerWidth < 800) {
-    const panel = document.querySelector('.floorplan-panel');
-    if (panel) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
 }
 
 // ─── FAQ TOGGLE ───
