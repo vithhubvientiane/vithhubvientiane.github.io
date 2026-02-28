@@ -112,6 +112,46 @@ function submitLead() {
     '</div>';
 }
 
+// ─── PACKAGE TOGGLE (Space Only / Full Managed) ───
+const PRICES = {
+  space:   { a: '฿12,000', shock: '฿10,000', b: '฿7,000', c: '฿5,000' },
+  managed: { a: '฿17,500', shock: '฿15,000', b: '฿12,000', c: '฿10,000' }
+};
+
+function switchPkg(mode) {
+  // Toggle button states
+  document.getElementById('toggleSpace').classList.toggle('active', mode === 'space');
+  document.getElementById('toggleManaged').classList.toggle('active', mode === 'managed');
+
+  // Update prices
+  const p = PRICES[mode];
+  document.getElementById('price-a').textContent     = p.a;
+  document.getElementById('price-shock').textContent = p.shock;
+  document.getElementById('price-b').textContent     = p.b;
+  document.getElementById('price-c').textContent     = p.c;
+
+  // Show/hide managed features
+  const isManaged = mode === 'managed';
+  ['feat-a-managed','feat-shock-managed','feat-b-managed','feat-c-managed'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.style.display = isManaged ? 'inline-flex' : 'none';
+  });
+
+  // Show/hide managed includes box
+  const box = document.getElementById('managedIncludes');
+  if (box) {
+    box.style.display = isManaged ? 'block' : 'none';
+  }
+
+  // Update price column label
+  const label = document.getElementById('priceLabel');
+  if (label) {
+    label.innerHTML = isManaged
+      ? '<span style="color:var(--red)">Full Managed</span>'
+      : '<span>Space Only</span>';
+  }
+}
+
 // ─── INIT ───
 document.addEventListener('DOMContentLoaded', () => {
   // Restore language
