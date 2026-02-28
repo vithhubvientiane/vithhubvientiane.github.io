@@ -157,3 +157,45 @@ document.addEventListener('DOMContentLoaded', () => {
   const saved = localStorage.getItem('vith-lang');
   if (saved && ['th', 'la', 'en'].includes(saved)) setLang(saved);
 });
+
+// ══════════════════════════════════
+// POPUP: VITH × BIG C · ขอบใจเด้อ
+// ══════════════════════════════════
+
+function openPopup() {
+  document.getElementById('popupOverlay').classList.add('popup-open');
+}
+function closePopup() {
+  document.getElementById('popupOverlay').classList.remove('popup-open');
+}
+function handlePopupOverlayClick(e) {
+  if (e.target === document.getElementById('popupOverlay')) closePopup();
+}
+function handlePopupRemind() {
+  const btn = document.getElementById('popupRemindBtn');
+  btn.textContent = '✅ จะแจ้งให้นะครับ!';
+  btn.style.cssText += ';background:rgba(6,199,85,0.15);border-color:rgba(6,199,85,0.4);color:#06C755;';
+  btn.disabled = true;
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
+
+// COUNTDOWN to March 25, 2026
+const POPUP_TARGET = new Date('2026-03-25T00:00:00+07:00');
+function updatePopupCountdown() {
+  const diff = POPUP_TARGET - new Date();
+  if (diff <= 0) { return; }
+  document.getElementById('popupDays').textContent  = String(Math.floor(diff/86400000)).padStart(2,'0');
+  document.getElementById('popupHours').textContent = String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
+  document.getElementById('popupMins').textContent  = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+  document.getElementById('popupSecs').textContent  = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+}
+updatePopupCountdown();
+setInterval(updatePopupCountdown, 1000);
+
+// Auto-open: แสดงครั้งแรกที่เปิดเว็บ (ถ้ายังไม่เคยปิด session นี้)
+window.addEventListener('load', () => {
+  if (!sessionStorage.getItem('popupSeen')) {
+    setTimeout(openPopup, 1200);
+    sessionStorage.setItem('popupSeen', '1');
+  }
+});
