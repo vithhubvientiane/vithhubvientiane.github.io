@@ -5,11 +5,19 @@ const LINE_URL = 'https://line.me/ti/p/' + LINE_ID;
 
 // ─── LANGUAGE ───
 function setLang(lang) {
+  // ซ่อนทุก element ที่มี data-lang
   document.querySelectorAll('[data-lang]').forEach(el => el.classList.remove('active'));
+  // แสดงเฉพาะ lang ที่เลือก
   document.querySelectorAll('[data-lang="' + lang + '"]').forEach(el => el.classList.add('active'));
+  // อัปเดตปุ่มภาษา — ใช้ try/catch ป้องกัน error
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-  document.querySelector('.lang-btn[onclick="setLang(\'' + lang + '\')"]').classList.add('active');
+  try {
+    const activeBtn = document.querySelector('.lang-btn[onclick="setLang(\'' + lang + '\')"]');
+    if (activeBtn) activeBtn.classList.add('active');
+  } catch(e) {}
+  // ตั้ง html lang attribute
   document.documentElement.lang = lang === 'la' ? 'lo' : lang;
+  // บันทึกค่า
   localStorage.setItem('vith-lang', lang);
 }
 
@@ -22,36 +30,28 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 // ─── PROGRESS BAR ───
 window.addEventListener('scroll', () => {
   const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
-  document.getElementById('progressBar').style.width = pct + '%';
+  const bar = document.getElementById('progressBar');
+  if (bar) bar.style.width = pct + '%';
 });
 
 // ─── INTERACTIVE FLOOR PLAN ───
 function showZone(zoneId) {
-  // Highlight all cards, dim non-selected
-  document.querySelectorAll('.zone-card').forEach(card => {
-    card.classList.remove('zone-active');
-  });
-
-  // Remove active from hotspots
+  document.querySelectorAll('.zone-card').forEach(card => card.classList.remove('zone-active'));
   document.querySelectorAll('.hotspot').forEach(h => h.classList.remove('active'));
 
-  // Activate selected zone card
   const card = document.getElementById('zone-' + zoneId);
   if (card) {
     card.classList.add('zone-active');
-    // Animate
     card.style.opacity = '0.4';
     requestAnimationFrame(() => {
       card.style.transition = 'opacity 0.25s ease';
       card.style.opacity = '1';
     });
-    // Scroll panel into view on mobile
     if (window.innerWidth < 800) {
       card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
   }
 
-  // Activate hotspot
   const hotspot = document.querySelector('[data-zone="' + zoneId + '"]');
   if (hotspot) hotspot.classList.add('active');
 }
@@ -59,9 +59,7 @@ function showZone(zoneId) {
 // ─── FAQ TOGGLE ───
 function toggleFaq(item) {
   const isOpen = item.classList.contains('open');
-  // Close all
   document.querySelectorAll('.faq-item').forEach(f => f.classList.remove('open'));
-  // Open clicked (if it was closed)
   if (!isOpen) item.classList.add('open');
 }
 
@@ -85,7 +83,7 @@ function submitLead() {
   }
 
   const msg = encodeURIComponent(
-    'สนใจจองบูธ VITH Hub\n' +
+    'สนใจจองบูถ VITH Hub\n' +
     'ชื่อ/บริษัท: ' + name + '\n' +
     'ติดต่อ: ' + contact + '\n' +
     'สินค้า: ' + product + '\n' +
@@ -93,12 +91,9 @@ function submitLead() {
     'Phase: ' + phase
   );
 
-  // Toast
   const toast = document.getElementById('toast');
-  toast.classList.add('show');
-  setTimeout(() => toast.classList.remove('show'), 4000);
+  if (toast) { toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 4000); }
 
-  // Thank-you state
   document.getElementById('leadForm').innerHTML =
     '<div style="text-align:center;padding:2rem 1rem;">' +
       '<div style="font-size:3rem;margin-bottom:1rem;">🎉</div>' +
@@ -111,70 +106,25 @@ function submitLead() {
     '</div>';
 }
 
-// ─── PACKAGE TOGGLE (Space Only / Full Managed) ───
-const PRICES = {
-  space:   { a: '฿12,000', shock: '฿10,000', b: '฿7,000', c: '฿5,000' },
-  managed: { a: '฿17,500', shock: '฿15,000', b: '฿12,000', c: '฿10,000' }
-};
-
-function switchPkg(mode) {
-  // Toggle button states
-  document.getElementById('toggleSpace').classList.toggle('active', mode === 'space');
-  document.getElementById('toggleManaged').classList.toggle('active', mode === 'managed');
-
-  // Update prices
-  const p = PRICES[mode];
-  document.getElementById('price-a').textContent     = p.a;
-  document.getElementById('price-shock').textContent = p.shock;
-  document.getElementById('price-b').textContent     = p.b;
-  document.getElementById('price-c').textContent     = p.c;
-
-  // Show/hide managed features
-  const isManaged = mode === 'managed';
-  ['feat-a-managed','feat-shock-managed','feat-b-managed','feat-c-managed'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.style.display = isManaged ? 'inline-flex' : 'none';
-  });
-
-  // Show/hide managed includes box
-  const box = document.getElementById('managedIncludes');
-  if (box) {
-    box.style.display = isManaged ? 'block' : 'none';
-  }
-
-  // Update price column label
-  const label = document.getElementById('priceLabel');
-  if (label) {
-    label.innerHTML = isManaged
-      ? '<span style="color:var(--red)">Full Managed</span>'
-      : '<span>Space Only</span>';
-  }
-}
-
-// ─── INIT ───
-document.addEventListener('DOMContentLoaded', () => {
-  // Restore language
-  const saved = localStorage.getItem('vith-lang');
-  if (saved && ['th', 'la', 'en'].includes(saved)) setLang(saved);
-});
-
-// ══════════════════════════════════
-// POPUP: VITH × BIG C · ขอบใจเด้อ
-// ══════════════════════════════════
-
+// ─── POPUP FUNCTIONS ───
 function openPopup() {
-  document.getElementById('popupOverlay').classList.add('popup-open');
+  const el = document.getElementById('popupOverlay');
+  if (el) el.classList.add('popup-open');
 }
 function closePopup() {
-  document.getElementById('popupOverlay').classList.remove('popup-open');
+  const el = document.getElementById('popupOverlay');
+  if (el) el.classList.remove('popup-open');
 }
 function handlePopupOverlayClick(e) {
   if (e.target === document.getElementById('popupOverlay')) closePopup();
 }
 function handlePopupRemind() {
   const btn = document.getElementById('popupRemindBtn');
+  if (!btn) return;
   btn.textContent = '✅ จะแจ้งให้นะครับ!';
-  btn.style.cssText += ';background:rgba(6,199,85,0.15);border-color:rgba(6,199,85,0.4);color:#06C755;';
+  btn.style.background   = 'rgba(6,199,85,0.15)';
+  btn.style.borderColor  = 'rgba(6,199,85,0.4)';
+  btn.style.color        = '#06C755';
   btn.disabled = true;
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
@@ -183,16 +133,28 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup()
 const POPUP_TARGET = new Date('2026-03-25T00:00:00+07:00');
 function updatePopupCountdown() {
   const diff = POPUP_TARGET - new Date();
-  if (diff <= 0) { return; }
-  document.getElementById('popupDays').textContent  = String(Math.floor(diff/86400000)).padStart(2,'0');
-  document.getElementById('popupHours').textContent = String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
-  document.getElementById('popupMins').textContent  = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
-  document.getElementById('popupSecs').textContent  = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+  if (diff <= 0) return;
+  const set = (id, val) => { const el = document.getElementById(id); if(el) el.textContent = String(val).padStart(2,'0'); };
+  set('popupDays',  Math.floor(diff/86400000));
+  set('popupHours', Math.floor((diff%86400000)/3600000));
+  set('popupMins',  Math.floor((diff%3600000)/60000));
+  set('popupSecs',  Math.floor((diff%60000)/1000));
 }
 updatePopupCountdown();
 setInterval(updatePopupCountdown, 1000);
 
-// Auto-open ทุกครั้งที่เปิดเว็บ
+// ─── INIT ───
+document.addEventListener('DOMContentLoaded', () => {
+  // Restore saved language
+  const saved = localStorage.getItem('vith-lang');
+  if (saved && ['th', 'la', 'en'].includes(saved)) {
+    setLang(saved);
+  } else {
+    setLang('th'); // default
+  }
+});
+
+// Auto-open popup หลังหน้าโหลดเสร็จ
 window.addEventListener('load', () => {
   setTimeout(openPopup, 1200);
 });
