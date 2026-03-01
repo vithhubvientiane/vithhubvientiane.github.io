@@ -1,15 +1,13 @@
-// ─── VITH HUB · script.js ───
+// ─── VITH HUB · script.js (UPDATED VERSION) ───
 
 const LINE_ID = '@cef8930n';
 const LINE_URL = 'https://line.me/ti/p/' + LINE_ID;
 
 // ─── LANGUAGE ───
 function setLang(lang) {
-  // ซ่อนทุก data-lang ก่อน
   document.querySelectorAll('[data-lang]').forEach(el => el.classList.remove('active'));
 
   if (lang === 'la') {
-    // แสดง Lao — ถ้า parent ไหนไม่มี [data-lang="la"] ให้ fallback แสดง Thai แทน
     document.querySelectorAll('[data-lang="la"]').forEach(el => el.classList.add('active'));
     document.querySelectorAll('[data-lang="th"]').forEach(el => {
       const parent = el.parentElement;
@@ -21,7 +19,6 @@ function setLang(lang) {
     document.querySelectorAll('[data-lang="' + lang + '"]').forEach(el => el.classList.add('active'));
   }
 
-  // อัปเดตปุ่มภาษา
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
   const btn = document.querySelector('.lang-btn[onclick="setLang(\'' + lang + '\')"]');
   if (btn) btn.classList.add('active');
@@ -44,11 +41,14 @@ window.addEventListener('scroll', () => {
 });
 
 // ─── FLOOR PLAN (Lightbox System) ───
-function openLightbox() {
+function openLightbox(imgSrc) {
   const lb = document.getElementById('floorplanLightbox');
+  const lbImg = document.getElementById('lightboxImg');
   if (lb) {
+    if (lbImg && imgSrc) lbImg.src = imgSrc;
     lb.style.display = 'flex';
-    document.body.style.overflow = 'hidden'; // ล็อกไม่ให้เลื่อนหน้าจอ
+    // ล็อกหน้าจอโดยใช้ Class (ต้องสัมพันธ์กับ CSS .noscroll ที่ผมแก้ให้ก่อนหน้า)
+    document.body.classList.add('noscroll');
   }
 }
 
@@ -56,16 +56,14 @@ function closeLightbox() {
   const lb = document.getElementById('floorplanLightbox');
   if (lb) {
     lb.style.display = 'none';
-    // คืนค่าการเลื่อนหน้าจอให้กลับมาเป็นปกติ
-    document.body.style.overflow = 'auto'; 
-    document.body.style.height = 'auto';
+    // ปลดล็อกหน้าจอ
+    document.body.classList.remove('noscroll');
+    // ล้างค่าค้างเผื่อ Browser เอ๋อ
+    document.body.style.position = '';
+    document.body.style.overflow = '';
   }
 }
 
-// เพิ่มฟีเจอร์กด Esc เพื่อปิด Lightbox
-document.addEventListener('keydown', e => { 
-  if (e.key === 'Escape') closeLightbox(); 
-});
 // ─── FAQ ───
 function toggleFaq(item) {
   const isOpen = item.classList.contains('open');
@@ -80,17 +78,22 @@ function submitLead() {
   const product = document.getElementById('f-product').value.trim();
   const pkg     = document.getElementById('f-package').value;
   const phase   = document.getElementById('f-phase').value;
+  
   const nameEl    = document.getElementById('f-name');
   const contactEl = document.getElementById('f-contact');
+  
   nameEl.style.borderColor = contactEl.style.borderColor = '';
+  
   if (!name || !contact) {
     if (!name)    nameEl.style.borderColor    = 'var(--red)';
     if (!contact) contactEl.style.borderColor = 'var(--red)';
     return;
   }
+  
   const msg = encodeURIComponent('สนใจจองบูถ VITH Hub\nชื่อ/บริษัท: '+name+'\nติดต่อ: '+contact+'\nสินค้า: '+product+'\nPackage: '+pkg+'\nPhase: '+phase);
   const toast = document.getElementById('toast');
   if (toast) { toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 4000); }
+  
   document.getElementById('leadForm').innerHTML =
     '<div style="text-align:center;padding:2rem 1rem;">'+
     '<div style="font-size:3rem;margin-bottom:1rem;">🎉</div>'+
@@ -102,15 +105,30 @@ function submitLead() {
 // ─── POPUP ───
 function openPopup() {
   const el = document.getElementById('popupOverlay');
-  if (el) el.classList.add('popup-open');
+  if (el) {
+    el.classList.add('popup-open');
+    document.body.classList.add('noscroll'); // ล็อกตอน Popup ขึ้นด้วย
+  }
 }
+
 function closePopup() {
   const el = document.getElementById('popupOverlay');
-  if (el) el.classList.remove('popup-open');
+  if (el) {
+    el.classList.remove('popup-open');
+    // ปลดล็อกเฉพาะกรณีที่ Lightbox ไม่ได้เปิดซ้อนอยู่
+    const lb = document.getElementById('floorplanLightbox');
+    if (!lb || lb.style.display !== 'flex') {
+      document.body.classList.remove('noscroll');
+      document.body.style.position = '';
+      document.body.style.overflow = '';
+    }
+  }
 }
+
 function handlePopupOverlayClick(e) {
   if (e.target === document.getElementById('popupOverlay')) closePopup();
 }
+
 function handlePopupRemind() {
   const btn = document.getElementById('popupRemindBtn');
   if (!btn) return;
@@ -120,7 +138,14 @@ function handlePopupRemind() {
   btn.style.color = '#06C755';
   btn.disabled = true;
 }
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
+
+// ─── GLOBAL EVENTS ───
+document.addEventListener('keydown', e => { 
+  if (e.key === 'Escape') {
+    closeLightbox();
+    closePopup();
+  }
+});
 
 // Countdown
 const POPUP_TARGET = new Date('2026-03-25T00:00:00+07:00');
@@ -134,15 +159,15 @@ function updatePopupCountdown() {
   if (g('popupMins'))  g('popupMins').textContent  = s((diff%3600000)/60000);
   if (g('popupSecs'))  g('popupSecs').textContent  = s((diff%60000)/1000);
 }
-updatePopupCountdown();
-setInterval(updatePopupCountdown, 1000);
 
 // ─── INIT ───
 document.addEventListener('DOMContentLoaded', () => {
   const saved = localStorage.getItem('vith-lang');
   if (saved && ['th','la','en'].includes(saved)) setLang(saved);
   else setLang('th');
+  
+  updatePopupCountdown();
+  setInterval(updatePopupCountdown, 1000);
 });
 
-// Auto-open popup
 window.addEventListener('load', () => setTimeout(openPopup, 1200));
