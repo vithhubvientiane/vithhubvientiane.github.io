@@ -257,79 +257,47 @@
 <section id="floorplan" class="section-pad">
   <div class="section-center">
     <div class="reveal">
-      <div class="section-eyebrow"><span data-lang="th" class="active">แผนผังพื้นที่</span><span data-lang="la">ແຜນຜັງພື້ນທີ່</span><span data-lang="en">Interactive Floor Plan</span></div>
-      <h2 class="section-title"><span data-lang="th" class="active">เลือกตำแหน่งบูทของคุณ</span><span data-lang="la">ເລືອກຕຳແໜ່ງບູດຂອງທ່ານ</span><span data-lang="en">Pick Your Booth Position</span></h2>
-      <p class="section-sub"><span data-lang="th" class="active">คลิกที่โซนเพื่อดูรายละเอียดและราคา — ที่นั่งมีจำกัด</span><span data-lang="la">ຄລິກທີ່ໂຊນເພື່ອເບິ່ງລາຍລະອຽດ ແລະ ລາຄາ — ທີ່ນັ່ງມີຈຳກັດ</span><span data-lang="en">Click a zone to see details and pricing — limited spots.</span></p>
-    </div>
-    <div class="floorplan-wrap reveal">
-      <div class="floorplan-map-box">
-        <div class="floorplan-map" id="floorplanMap">
-          <img src="images/floor-plan.png" alt="Floor Plan" id="floorImg">
-          <button class="hotspot" style="top:38%;left:42%" data-zone="prime" onclick="showZone('prime')"><span class="hotspot-pulse"></span><span class="hotspot-label">Prime</span></button>
-          <button class="hotspot" style="top:55%;left:28%" data-zone="standard" onclick="showZone('standard')"><span class="hotspot-pulse"></span><span class="hotspot-label">Standard</span></button>
-          <button class="hotspot hotspot-skill" style="top:30%;left:65%" data-zone="skill" onclick="showZone('skill')"><span class="hotspot-pulse"></span><span class="hotspot-label">Skill Center</span></button>
-          <button class="hotspot hotspot-food" style="top:70%;left:55%" data-zone="food" onclick="showZone('food')"><span class="hotspot-pulse"></span><span class="hotspot-label">Food Zone</span></button>
-        </div>
-        <p class="floorplan-hint"><span data-lang="th" class="active">👆 แตะที่จุดสีเพื่อดูรายละเอียดโซน</span><span data-lang="la">👆 ແຕະທີ່ຈຸດສີເພື່ອເບິ່ງລາຍລະອຽດໂຊນ</span><span data-lang="en">👆 Tap a dot to explore each zone</span></p>
+      <div class="section-eyebrow">
+        <span data-lang="th" class="active">แผนผังพื้นที่</span>
+        <span data-lang="la">ແຜນຜັງພື້ນທີ່</span>
+        <span data-lang="en">Interactive Floor Plan</span>
       </div>
-      <div class="floorplan-panel">
-        <div class="zone-card" id="zone-default">
-          <div class="zone-icon">🗺️</div>
-          <h3 class="zone-title"><span data-lang="th" class="active">Big C — ลานจอดรถ</span><span data-lang="la">Big C — ລານຈອດລົດກາງແຈ້ງ</span><span data-lang="en">Big C — Outdoor Parking Lot</span></h3>
-          <p class="zone-desc"><span data-lang="th" class="active">แตะจุดสีบนแผนผังเพื่อดูรายละเอียดแต่ละโซน</span><span data-lang="la">ແຕະຈຸດສີເທິງແຜນຜັງເພື່ອເບິ່ງລາຍລະອຽດ</span><span data-lang="en">Tap a colored dot on the map to see zone details.</span></p>
-          <div class="zone-legend">
-            <div class="legend-row"><span class="ldot ldot-red"></span><span data-lang="th" class="active">Prime Zone — ติดทางเข้าหลัก</span><span data-lang="la">Prime Zone — ຕິດທາງເຂົ້າຫຼັກ</span><span data-lang="en">Prime Zone — near main entrance</span></div>
-            <div class="legend-row"><span class="ldot ldot-gold"></span><span data-lang="th" class="active">Standard Zone — โซนมาตรฐาน</span><span data-lang="la">Standard Zone — ໂຊນມາດຕະຖານ</span><span data-lang="en">Standard Zone</span></div>
-            <div class="legend-row"><span class="ldot ldot-blue"></span><span data-lang="th" class="active">Skill Center — จุดข้อมูลแรงงาน</span><span data-lang="la">Skill Center — ຈຸດຂໍ້ມູນແຮງງານ</span><span data-lang="en">Skill Center</span></div>
-            <div class="legend-row"><span class="ldot ldot-green"></span><span data-lang="th" class="active">Food Zone — ร้านอาหาร</span><span data-lang="la">Food Zone — ຮ້ານອາຫານ</span><span data-lang="en">Food Zone</span></div>
-          </div>
-        </div>
-        <div class="zone-card hidden" id="zone-prime">
-          <div class="zone-badge zone-badge-red">Prime Zone</div>
-          <div class="zone-icon">🔥</div>
-          <h3 class="zone-title"><span data-lang="th" class="active">Prime Zone — ติดทางเข้าหลัก</span><span data-lang="la">Prime Zone — ຕິດທາງເຂົ້າຫຼັກ</span><span data-lang="en">Prime Zone — Main Entrance</span></h3>
-          <div class="zone-specs">
-            <div class="spec-item"><span class="spec-label"><span data-lang="th" class="active">ราคา</span><span data-lang="la">ລາຄາ</span><span data-lang="en">Price</span></span><span class="spec-val spec-red">฿12,000</span></div>
-            <div class="spec-item"><span class="spec-label"><span data-lang="th" class="active">ขนาด</span><span data-lang="la">ຂະໜາດ</span><span data-lang="en">Size</span></span><span class="spec-val">2×2 m</span></div>
-            <div class="spec-item"><span class="spec-label"><span data-lang="th" class="active">เหลือ</span><span data-lang="la">ເຫຼືອ</span><span data-lang="en">Left</span></span><span class="spec-val spec-red">⚡ 5 <span data-lang="th" class="active">ที่</span><span data-lang="la">ທີ່</span><span data-lang="en">slots</span></span></div>
-          </div>
-          <a href="#contact" class="zone-cta"><span data-lang="th" class="active">จอง Prime Zone</span><span data-lang="la">ຈອງ Prime Zone</span><span data-lang="en">Book Prime Zone</span></a>
-        </div>
-        <div class="zone-card hidden" id="zone-standard">
-          <div class="zone-badge zone-badge-gold">Standard Zone</div>
-          <div class="zone-icon">📦</div>
-          <h3 class="zone-title">Standard Zone</h3>
-          <div class="zone-specs">
-            <div class="spec-item"><span class="spec-label"><span data-lang="th" class="active">ราคา</span><span data-lang="la">ລາຄາ</span><span data-lang="en">Price</span></span><span class="spec-val spec-gold">฿8,500</span></div>
-            <div class="spec-item"><span class="spec-label"><span data-lang="th" class="active">ขนาด</span><span data-lang="la">ຂະໜາດ</span><span data-lang="en">Size</span></span><span class="spec-val">2×2 m</span></div>
-            <div class="spec-item"><span class="spec-label"><span data-lang="th" class="active">เหลือ</span><span data-lang="la">ເຫຼືອ</span><span data-lang="en">Left</span></span><span class="spec-val">14 <span data-lang="th" class="active">ที่</span><span data-lang="la">ທີ່</span><span data-lang="en">slots</span></span></div>
-          </div>
-          <a href="#contact" class="zone-cta zone-cta-gold"><span data-lang="th" class="active">จอง Standard Zone</span><span data-lang="la">ຈອງ Standard Zone</span><span data-lang="en">Book Standard Zone</span></a>
-        </div>
-        <div class="zone-card hidden" id="zone-skill">
-          <div class="zone-badge zone-badge-blue">Skill Center</div>
-          <div class="zone-icon">🎓</div>
-          <h3 class="zone-title">Skill Center</h3>
-          <div class="zone-specs">
-            <div class="spec-item"><span class="spec-label"><span data-lang="th" class="active">คาดการณ์คนเข้า</span><span data-lang="la">ຄາດການຄົນເຂົ້າ</span><span data-lang="en">Est. Visitors</span></span><span class="spec-val spec-blue">500+/<span data-lang="th" class="active">วัน</span><span data-lang="la">ວັນ</span><span data-lang="en">day</span></span></div>
-          </div>
-          <a href="#contact" class="zone-cta zone-cta-blue"><span data-lang="th" class="active">ถามเพิ่มเติม</span><span data-lang="la">ຖາມເພີ່ມເຕີມ</span><span data-lang="en">Learn More</span></a>
-        </div>
-        <div class="zone-card hidden" id="zone-food">
-          <div class="zone-badge zone-badge-green">Food Zone</div>
-          <div class="zone-icon">🍜</div>
-          <h3 class="zone-title">Food Zone</h3>
-          <div class="zone-specs">
-            <div class="spec-item"><span class="spec-label"><span data-lang="th" class="active">ร้านอาหาร</span><span data-lang="la">ຮ້ານອາຫານ</span><span data-lang="en">Restaurants</span></span><span class="spec-val spec-green">12</span></div>
-          </div>
-          <a href="#packages" class="zone-cta zone-cta-green"><span data-lang="th" class="active">ดูแพ็กเกจ</span><span data-lang="la">ເບິ່ງແພັກເກັດ</span><span data-lang="en">View Packages</span></a>
+      <h2 class="section-title">
+        <span data-lang="th" class="active">เลือกตำแหน่งบูทของคุณ</span>
+        <span data-lang="la">ເລືອກຕຳແໜ່ງບູດຂອງທ່ານ</span>
+        <span data-lang="en">Pick Your Booth Position</span>
+      </h2>
+      <p class="section-sub">
+        <span data-lang="th" class="active">แตะที่รูปเพื่อขยายดูรายละเอียดตำแหน่งบูถแต่ละโซนอย่างชัดเจน</span>
+        <span data-lang="la">ແຕະທີ່ຮູບເພື່ອເບິ່ງລາຍລະອຽດຕຳແໜ່ງບູດແຕ່ລະໂຊນຢ່າງຊັດເຈນ</span>
+        <span data-lang="en">Tap the map to expand and see booth details.</span>
+      </p>
+    </div>
+
+    <div class="floorplan-container reveal" style="margin-top: 40px;">
+      <div class="floorplan-display" onclick="openLightbox()" style="cursor: pointer; position: relative; overflow: hidden; border-radius: 15px;">
+        <img src="images/floor-plan.png" alt="Floor Plan" id="floorImgMain" style="width: 100%; display: block; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+        <div class="zoom-overlay">
+          <div class="zoom-icon">🔍</div>
+          <span data-lang="th" class="active">แตะเพื่อขยายดูผังพื้นที่ชัดๆ</span>
+          <span data-lang="la">ແຕະເພື່ອຂະຫຍາຍເບິ່ງຜັງພື້ນທີ່</span>
+          <span data-lang="en">Tap to Enlarge Floor Plan</span>
         </div>
       </div>
     </div>
   </div>
-</section>
+</section> <div id="floorplanLightbox" class="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close">&times;</span>
+  <div class="lightbox-wrapper">
+    <img class="lightbox-content" id="imgFull" src="images/floor-plan.png" onclick="event.stopPropagation()">
+    <div id="lightboxCaption" style="margin-top: 20px; color: #fff; text-align: center; font-family: 'Sarabun', sans-serif;">
+      <span data-lang="th" class="active">แปลนพื้นที่ Big C Vientiane - Phase 1 & 2</span>
+      <span data-lang="la">ແປນພື້ນທີ່ Big C Vientiane - Phase 1 & 2</span>
+      <span data-lang="en">Big C Vientiane Floor Plan - Phase 1 & 2</span>
+    </div>
+  </div>
+</div>
 
-<!-- PHASES -->
 <section id="phases" class="section-pad">
   <div class="section-center">
     <div class="reveal">
