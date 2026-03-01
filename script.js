@@ -56,7 +56,7 @@ function closeLightbox() {
   const lb = document.getElementById('floorplanLightbox');
   if (lb) {
     lb.style.display = 'none';
-    document.body.style.overflow = 'auto'; // ปลดล็อกหน้าจอ
+    document.body.style.overflow = 'auto'; // สำคัญมาก: ต้องมีบรรทัดนี้เพื่อแก้ปัญหาหน้าจอค้าง
   }
 }
 
