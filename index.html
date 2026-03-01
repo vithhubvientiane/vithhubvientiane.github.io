@@ -252,130 +252,49 @@
 </section>
 
 <!-- FLOOR PLAN -->
-<section id="floorplan" class="section-pad">
-  <div class="section-center">
-    <div class="reveal">
-      <div class="section-eyebrow"><span data-lang="th" class="active">แผนผังพื้นที่</span><span data-lang="la">ແຜນຜັງພື້ນທີ່</span><span data-lang="en">Interactive Floor Plan</span></div>
-      <h2 class="section-title"><span data-lang="th" class="active">เลือกตำแหน่งบูถของคุณ</span><span data-lang="la">ເລືອກຕຳແໜ່ງບູດຂອງທ່ານ</span><span data-lang="en">Pick Your Booth Position</span></h2>
-      <p class="section-sub"><span data-lang="th" class="active">คลิกที่โซนเพื่อดูรายละเอียดและราคา — ที่นั่งมีจำกัด</span><span data-lang="la">ຄລິກທີ່ໂຊນເພື່ອເບິ່ງລາຍລະອຽດ ແລະ ລາຄາ — ທີ່ນັ່ງມີຈຳກັດ</span><span data-lang="en">Click a zone to see details and pricing — limited spots.</span></p>
-    </div>
-    <div class="floorplan-wrap reveal">
-      <div class="floorplan-map-box">
-        <div class="floorplan-map" id="floorplanMap">
-          <img src="images/floor-plan.png" alt="Floor Plan" id="floorImg">
-          <button class="hotspot" style="top:38%;left:42%" data-zone="prime" onclick="showZone('prime')"><span class="hotspot-pulse"></span><span class="hotspot-label">Prime</span></button>
-          <button class="hotspot" style="top:55%;left:28%" data-zone="standard" onclick="showZone('standard')"><span class="hotspot-pulse"></span><span class="hotspot-label">Standard</span></button>
-          <button class="hotspot hotspot-skill" style="top:30%;left:65%" data-zone="skill" onclick="showZone('skill')"><span class="hotspot-pulse"></span><span class="hotspot-label">Skill Center</span></button>
-          <button class="hotspot hotspot-food" style="top:70%;left:55%" data-zone="food" onclick="showZone('food')"><span class="hotspot-pulse"></span><span class="hotspot-label">Food Zone</span></button>
-        </div>
-        <p class="floorplan-hint"><span data-lang="th" class="active">👆 แตะที่จุดสีเพื่อดูรายละเอียดโซน</span><span data-lang="la">👆 ແຕະທີ່ຈຸດສີເພື່ອເບິ່ງລາຍລະອຽດໂຊນ</span><span data-lang="en">👆 Tap a dot to explore each zone</span></p>
-      </div>
-      <div class="floorplan-panel">
-        <div class="zone-card" id="zone-default">
-          <div class="zone-icon">🗺️</div>
-          <h3 class="zone-title"><span data-lang="th" class="active">Big C — ลานจอดรถกลางแจ้ง</span><span data-lang="la">Big C — ລານຈອດລົດກາງແຈ້ງ</span><span data-lang="en">Big C — Outdoor Parking Lot</span></h3>
-          <p class="zone-desc"><span data-lang="th" class="active">แตะจุดสีบนแผนผังเพื่อดูรายละเอียดแต่ละโซน</span><span data-lang="la">ແຕະຈຸດສີເທິງແຜນຜັງເພື່ອເບິ່ງລາຍລະອຽດ</span><span data-lang="en">Tap a colored dot on the map to see zone details.</span></p>
-          <div class="zone-legend">
-            <div class="legend-row"><span class="ldot ldot-red"></span><span data-lang="th" class="active">Prime Zone — ติดทางเข้าหลัก</span><span data-lang="la">Prime Zone — ຕິດທາງເຂົ້າຫຼັກ</span><span data-lang="en">Prime Zone — near main entrance</span></div>
-            <div class="legend-row"><span class="ldot ldot-gold"></span><span data-lang="th" class="active">Standard Zone — โซนมาตรฐาน</span><span data-lang="la">Standard Zone — ໂຊນມາດຕະຖານ</span><span data-lang="en">Standard Zone</span></div>
-            <div class="legend-row"><span class="ldot ldot-blue"></span><span data-lang="th" class="active">Skill Center — จุดข้อมูลแรงงาน</span><span data-lang="la">Skill Center — ຈຸດຂໍ້ມູນແຮງງານ</span><span data-lang="en">Skill Center</span></div>
-            <div class="legend-row"><span class="ldot ldot-green"></span><span data-lang="th" class="active">Food Zone — ร้านอาหาร</span><span data-lang="la">Food Zone — ຮ້ານອາຫານ</span><span data-lang="en">Food Zone</span></div>
-          </div>
-        </div>
-        <div class="zone-card hidden" id="zone-prime">
+<div class="zone-card hidden" id="zone-prime">
           <div class="zone-badge zone-badge-red">Prime Zone</div>
           <div class="zone-icon">🔥</div>
-          <h3 class="zone-title"><span data-lang="th" class="active">Prime Zone — ติดทางเข้าหลัก</span><span data-lang="la">Prime Zone — ຕິດທາງເຂົ້າຫຼັກ</span><span data-lang="en">Prime Zone — Main Entrance</span></h3>
+          <h3 class="zone-title">
+            <span data-lang="th" class="active">Prime Zone — ติดทางเข้าหลัก</span>
+            <span data-lang="la">Prime Zone — ຕິດທາງເຂົ້າຫຼັກ</span>
+            <span data-lang="en">Prime Zone — Main Entrance</span>
+          </h3>
           <div class="zone-specs">
-            <div class="spec-item"><span class="spec-label"><span data-lang="th" class="active">ราคา</span><span data-lang="la">ລາຄາ</span><span data-lang="en">Price</span></span><span class="spec-val spec-red">฿12,000</span></div>
-            <div class="spec-item"><span class="spec-label"><span data-lang="th" class="active">ขนาด</span><span data-lang="la">ຂະໜາດ</span><span data-lang="en">Size</span></span><span class="spec-val">2×2 m</span></div>
-            <div class="spec-item"><span class="spec-label"><span data-lang="th" class="active">เหลือ</span><span data-lang="la">ເຫຼືອ</span><span data-lang="en">Left</span></span><span class="spec-val spec-red">⚡ 5 <span data-lang="th" class="active">ที่</span><span data-lang="la">ທີ່</span><span data-lang="en">slots</span></span></div>
+            <div class="spec-item">
+              <span class="spec-label"><span data-lang="th" class="active">ราคา</span><span data-lang="la">ລາຄາ</span><span data-lang="en">Price</span></span>
+              <span class="spec-val spec-red">฿12,000</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label"><span data-lang="th" class="active">เหลือ</span><span data-lang="la">ເຫຼືອ</span><span data-lang="en">Left</span></span>
+              <span class="spec-val spec-red">⚡ 5</span>
+            </div>
           </div>
-          <a href="#contact" class="zone-cta"><span data-lang="th" class="active">จอง Prime Zone</span><span data-lang="la">ຈອງ Prime Zone</span><span data-lang="en">Book Prime Zone</span></a>
+          <a href="#contact" class="zone-cta">
+            <span data-lang="th" class="active">จองโซนนี้</span>
+            <span data-lang="la">ຈອງໂຊນນີ້</span>
+            <span data-lang="en">Book This Zone</span>
+          </a>
         </div>
-        <div class="zone-card hidden" id="zone-standard">
-          <div class="zone-badge zone-badge-gold">Standard Zone</div>
-          <div class="zone-icon">📦</div>
-          <h3 class="zone-title">Standard Zone</h3>
-          <div class="zone-specs">
-            <div class="spec-item"><span class="spec-label"><span data-lang="th" class="active">ราคา</span><span data-lang="la">ລາຄາ</span><span data-lang="en">Price</span></span><span class="spec-val spec-gold">฿8,500</span></div>
-            <div class="spec-item"><span class="spec-label"><span data-lang="th" class="active">ขนาด</span><span data-lang="la">ຂະໜາດ</span><span data-lang="en">Size</span></span><span class="spec-val">2×2 m</span></div>
-            <div class="spec-item"><span class="spec-label"><span data-lang="th" class="active">เหลือ</span><span data-lang="la">ເຫຼືອ</span><span data-lang="en">Left</span></span><span class="spec-val">14 <span data-lang="th" class="active">ที่</span><span data-lang="la">ທີ່</span><span data-lang="en">slots</span></span></div>
-          </div>
-          <a href="#contact" class="zone-cta zone-cta-gold"><span data-lang="th" class="active">จอง Standard Zone</span><span data-lang="la">ຈອງ Standard Zone</span><span data-lang="en">Book Standard Zone</span></a>
-        </div>
-        <div class="zone-card hidden" id="zone-skill">
-          <div class="zone-badge zone-badge-blue">Skill Center</div>
-          <div class="zone-icon">🎓</div>
-          <h3 class="zone-title">Skill Center</h3>
-          <div class="zone-specs">
-            <div class="spec-item"><span class="spec-label"><span data-lang="th" class="active">คาดการณ์คนเข้า</span><span data-lang="la">ຄາດການຄົນເຂົ້າ</span><span data-lang="en">Est. Visitors</span></span><span class="spec-val spec-blue">500+/<span data-lang="th" class="active">วัน</span><span data-lang="la">ວັນ</span><span data-lang="en">day</span></span></div>
-          </div>
-          <a href="#contact" class="zone-cta zone-cta-blue"><span data-lang="th" class="active">ถามเพิ่มเติม</span><span data-lang="la">ຖາມເພີ່ມເຕີມ</span><span data-lang="en">Learn More</span></a>
-        </div>
-        <div class="zone-card hidden" id="zone-food">
-          <div class="zone-badge zone-badge-green">Food Zone</div>
-          <div class="zone-icon">🍜</div>
-          <h3 class="zone-title">Food Zone</h3>
-          <div class="zone-specs">
-            <div class="spec-item"><span class="spec-label"><span data-lang="th" class="active">ร้านอาหาร</span><span data-lang="la">ຮ້ານອາຫານ</span><span data-lang="en">Restaurants</span></span><span class="spec-val spec-green">12</span></div>
-          </div>
-          <a href="#packages" class="zone-cta zone-cta-green"><span data-lang="th" class="active">ดูแพ็กเกจ</span><span data-lang="la">ເບິ່ງແພັກເກັດ</span><span data-lang="en">View Packages</span></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- PHASES -->
+      </div> </div> </div> </section>
+
 <section id="phases" class="section-pad">
   <div class="section-center">
-    <div class="reveal">
-      <div class="section-eyebrow">Roadmap</div>
-      <h2 class="section-title"><span data-lang="th" class="active">แผนงาน 2 Phase</span><span data-lang="la">ແຜນງານ 2 Phase</span><span data-lang="en">2-Phase Launch Plan</span></h2>
-      <p class="section-sub"><span data-lang="th" class="active">เริ่มเล็กเพื่อพิสูจน์ระบบ แล้วระเบิดใหญ่ใน Grand Opening</span><span data-lang="la">ເລີ່ມນ້ອຍເພື່ອພິສູດລະບົບ ແລ້ວຂະຫຍາຍໃຫຍ່ໃນ Grand Opening</span><span data-lang="en">Start lean to validate, then scale big at Grand Opening.</span></p>
     </div>
-    <div class="phases-wrap reveal">
-      <div class="phase-card phase-1">
-        <div class="phase-accent"></div>
-        <div class="phase-num">01</div>
-        <span class="phase-tag">Phase 1 · Sandbox</span>
-        <h3 class="phase-title">Thank You Fair</h3>
-        <p class="phase-date"><span data-lang="th" class="active">📅 มีนาคม 2026 · 5 วัน · Big C เวียงจันทน์</span><span data-lang="la">📅 ມີນາ 2026 · 5 ວັນ · Big C ວຽງຈັນ</span><span data-lang="en">📅 March 2026 · 5 Days · Big C Vientiane</span></p>
-        <ul class="phase-items">
-          <li><span data-lang="th" class="active">ทดสอบระบบพื้นที่ & Logistics</span><span data-lang="la">ທົດສອບລະບົບພື້ນທີ່ ແລະ Logistics</span><span data-lang="en">System & logistics sandbox test</span></li>
-          <li><span data-lang="th" class="active">ดึงคนเข้าห้างด้วยโปรโมชั่นสินค้าราคาพิเศษ</span><span data-lang="la">ດຶງຄົນເຂົ້າຫ້າງດ້ວຍໂປຣໂມຊັ່ນລາຄາພິເສດ</span><span data-lang="en">Drive foot traffic via special deals</span></li>
-          <li><span data-lang="th" class="active">เปิดตัว Skill Center จุดข้อมูลแรงงาน</span><span data-lang="la">ເປີດຕົວ Skill Center ຈຸດຂໍ້ມູນແຮງງານ</span><span data-lang="en">Launch Skill Center</span></li>
-          <li><span data-lang="th" class="active">กลุ่มเป้า: ซัพพลายเออร์ Big C + ร้านค้าท้องถิ่น</span><span data-lang="la">ກຸ່ມເປົ້າ: ຜູ້ສະໜອງ Big C + ຮ້ານຄ້າທ້ອງຖິ່ນ</span><span data-lang="en">Target: Big C suppliers + local shops</span></li>
-        </ul>
-        <div class="phase-profit">
-          <span class="phase-profit-label"><span data-lang="th" class="active">คืนทุนภายใน</span><span data-lang="la">ຄືນທຶນພາຍໃນ</span><span data-lang="en">Break-even in</span></span>
-          <span class="phase-profit-num">2–3</span>
-          <span style="font-size:0.8rem;color:var(--muted)"><span data-lang="th" class="active">วัน</span><span data-lang="la">ວັນ</span><span data-lang="en">days</span></span>
-        </div>
-      </div>
-      <div class="phase-card phase-2 featured">
-        <div class="phase-accent"></div>
-        <div class="phase-num">02</div>
-        <span class="phase-tag">Phase 2 · Grand Opening</span>
-        <h3 class="phase-title">VITH Hub Launch</h3>
-        <p class="phase-date"><span data-lang="th" class="active">📅 พฤษภาคม 2026 · 7 วัน · ระดับนานาชาติ</span><span data-lang="la">📅 ພຶດສະພາ 2026 · 7 ວັນ · ລະດັບສາກົນ</span><span data-lang="en">📅 May 2026 · 7 Days · International</span></p>
-        <ul class="phase-items">
-          <li><span data-lang="th" class="active">เปิดตัว Hub อย่างเป็นทางการ ระดับนานาชาติ</span><span data-lang="la">ເປີດຕົວ Hub ຢ່າງເປັນທາງການ ລະດັບສາກົນ</span><span data-lang="en">Official international-scale Hub launch</span></li>
-          <li><span data-lang="th" class="active">สมาคมแฟรนไชส์ + SME ภาคเหนือ</span><span data-lang="la">ສະມາຄົມ Franchise + SME ພາກເໜືອ</span><span data-lang="en">Franchise associations + Northern SMEs</span></li>
-          <li><span data-lang="th" class="active">เครื่องจักร B2B + Investor Group</span><span data-lang="la">ເຄື່ອງຈັກ B2B + ກຸ່ມນັກລົງທຶນ</span><span data-lang="en">B2B machinery + Investor groups</span></li>
-          <li><span data-lang="th" class="active">Influencer ลาว + TikTok/FB Campaign</span><span data-lang="la">Influencer ລາວ + TikTok/FB Campaign</span><span data-lang="en">Lao Influencers + TikTok/FB Ads</span></li>
-        </ul>
-        <div class="phase-profit">
-          <span class="phase-profit-label"><span data-lang="th" class="active">คาดการณ์ผู้เข้าร่วม</span><span data-lang="la">ຄາດການຜູ້ເຂົ້າຮ່ວມ</span><span data-lang="en">Expected Visitors</span></span>
-          <span class="phase-profit-num">10K+</span>
-          <span style="font-size:0.8rem;color:var(--muted)"><span data-lang="th" class="active">คน · 7 วัน</span><span data-lang="la">ຄົນ · 7 ວັນ</span><span data-lang="en">people · 7 days</span></span>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
 
+<section id="packages" class="section-pad">
+  <div class="section-center">
+    <div class="reveal">
+      <div class="section-eyebrow">
+        <span data-lang="th" class="active">แพ็กเกจการร่วมงาน</span>
+        <span data-lang="la">ແພັກເກດການຮ່ວມງານ</span>
+        <span data-lang="en">Participation Packages</span>
+      </div>
+      </div>
+  </div>
+</section>
 <!-- PACKAGES -->
 <section id="packages" class="section-pad">
   <div class="section-center">
