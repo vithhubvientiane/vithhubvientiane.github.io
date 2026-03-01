@@ -1,4 +1,4 @@
-// ─── VITH HUB · script.js (UPDATED VERSION) ───
+// ─── VITH HUB · script.js (COMPLETE VERSION) ───
 
 const LINE_ID = '@cef8930n';
 const LINE_URL = 'https://line.me/ti/p/' + LINE_ID;
@@ -41,13 +41,11 @@ window.addEventListener('scroll', () => {
 });
 
 // ─── FLOOR PLAN (Lightbox System) ───
-function openLightbox(imgSrc) {
+function openLightbox() {
   const lb = document.getElementById('floorplanLightbox');
-  const lbImg = document.getElementById('lightboxImg');
   if (lb) {
-    if (lbImg && imgSrc) lbImg.src = imgSrc;
     lb.style.display = 'flex';
-    // ล็อกหน้าจอโดยใช้ Class (ต้องสัมพันธ์กับ CSS .noscroll ที่ผมแก้ให้ก่อนหน้า)
+    // ล็อกหน้าจอ
     document.body.classList.add('noscroll');
   }
 }
@@ -56,11 +54,10 @@ function closeLightbox() {
   const lb = document.getElementById('floorplanLightbox');
   if (lb) {
     lb.style.display = 'none';
-    // ปลดล็อกหน้าจอ
+    // ปลดล็อกหน้าจอและคืนค่าปกติ
     document.body.classList.remove('noscroll');
-    // ล้างค่าค้างเผื่อ Browser เอ๋อ
-    document.body.style.position = '';
     document.body.style.overflow = '';
+    document.body.style.height = '';
   }
 }
 
@@ -78,7 +75,6 @@ function submitLead() {
   const product = document.getElementById('f-product').value.trim();
   const pkg     = document.getElementById('f-package').value;
   const phase   = document.getElementById('f-phase').value;
-  
   const nameEl    = document.getElementById('f-name');
   const contactEl = document.getElementById('f-contact');
   
@@ -107,7 +103,7 @@ function openPopup() {
   const el = document.getElementById('popupOverlay');
   if (el) {
     el.classList.add('popup-open');
-    document.body.classList.add('noscroll'); // ล็อกตอน Popup ขึ้นด้วย
+    document.body.classList.add('noscroll'); // ล็อกจอตอนป๊อปอัพขึ้น
   }
 }
 
@@ -115,12 +111,10 @@ function closePopup() {
   const el = document.getElementById('popupOverlay');
   if (el) {
     el.classList.remove('popup-open');
-    // ปลดล็อกเฉพาะกรณีที่ Lightbox ไม่ได้เปิดซ้อนอยู่
+    // ปลดล็อกหน้าจอ (เช็คเผื่อ Lightbox ไม่ได้เปิดอยู่)
     const lb = document.getElementById('floorplanLightbox');
     if (!lb || lb.style.display !== 'flex') {
       document.body.classList.remove('noscroll');
-      document.body.style.position = '';
-      document.body.style.overflow = '';
     }
   }
 }
@@ -139,15 +133,7 @@ function handlePopupRemind() {
   btn.disabled = true;
 }
 
-// ─── GLOBAL EVENTS ───
-document.addEventListener('keydown', e => { 
-  if (e.key === 'Escape') {
-    closeLightbox();
-    closePopup();
-  }
-});
-
-// Countdown
+// ─── COUNTDOWN ───
 const POPUP_TARGET = new Date('2026-03-25T00:00:00+07:00');
 function updatePopupCountdown() {
   const diff = POPUP_TARGET - new Date();
@@ -160,6 +146,14 @@ function updatePopupCountdown() {
   if (g('popupSecs'))  g('popupSecs').textContent  = s((diff%60000)/1000);
 }
 
+// ─── GLOBAL EVENTS (Esc key) ───
+document.addEventListener('keydown', e => { 
+  if (e.key === 'Escape') {
+    closeLightbox();
+    closePopup();
+  }
+});
+
 // ─── INIT ───
 document.addEventListener('DOMContentLoaded', () => {
   const saved = localStorage.getItem('vith-lang');
@@ -170,4 +164,5 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(updatePopupCountdown, 1000);
 });
 
+// Auto-open popup
 window.addEventListener('load', () => setTimeout(openPopup, 1200));
