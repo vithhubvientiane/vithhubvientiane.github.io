@@ -101,9 +101,31 @@ nav {
 .hero-inner { position: relative; z-index: 1; max-width: 1000px; width: 100%; text-align: center; }
 .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(227,30,36,0.12); border: 1px solid rgba(227,30,36,0.35); color: #ff8a8e; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; padding: 8px 20px; border-radius: 99px; margin-bottom: 2rem; animation: fadeUp 0.8s ease both; }
 .badge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--red); animation: pulse 1.8s infinite; }
-.hero-title { font-family: var(--font-deco); font-size: clamp(4rem,12vw,9rem); line-height: 0.9; letter-spacing: 0.02em; animation: fadeUp 0.8s 0.1s ease both; margin-bottom: 0.5rem; }
-.hero-title .amp { color: var(--red); }
-.hero-title .sub {
+/* --- ส่วนที่วางแทนที่ของเดิมใน style.css --- */
+.hero-title {
+    font-family: var(--font-headline);
+    font-size: clamp(2.5rem, 8vw, 5.5rem); /* ย่อขยายอัตโนมัติ: เล็กสุด 2.5rem ใหญ่สุด 5.5rem */
+    line-height: 0.95;
+    text-transform: uppercase;
+    margin: 0.5rem 0;
+    letter-spacing: -0.02em;
+    display: block;
+    width: 100%;
+}
+
+.hero-title .amp {
+    color: var(--red);
+    font-size: 0.8em; /* ย่อเครื่องหมาย × ให้เล็กลงนิดนึงเพื่อประหยัดพื้นที่ */
+    margin: 0 5px;
+}
+
+/* เพิ่ม Media Query สำหรับมือถือจอเล็ก (iPhone SE / จอต่ำกว่า 400px) */
+@media (max-width: 400px) {
+    .hero-title {
+        font-size: 2.2rem !important; /* บังคับให้เล็กลงอีกถ้าจอนิดเดียว */
+        white-space: nowrap; /* บังคับให้อยู่บรรทัดเดียวกัน ไม่ให้แยกบรรทัด */
+    }
+}
   /* Sub-title ใน hero ใช้ Bai Jamjuree แทน Bebas */
   font-family: var(--font-headline);
   color: var(--gold); font-size: 0.38em; display: block;
