@@ -5,19 +5,28 @@ const LINE_URL = 'https://line.me/ti/p/' + LINE_ID;
 
 // ─── LANGUAGE ───
 function setLang(lang) {
-  // ซ่อนทุก element ที่มี data-lang
+  // ซ่อนทุก data-lang ก่อน
   document.querySelectorAll('[data-lang]').forEach(el => el.classList.remove('active'));
-  // แสดงเฉพาะ lang ที่เลือก
-  document.querySelectorAll('[data-lang="' + lang + '"]').forEach(el => el.classList.add('active'));
-  // อัปเดตปุ่มภาษา — ใช้ try/catch ป้องกัน error
+
+  if (lang === 'la') {
+    // แสดง Lao — ถ้า parent ไหนไม่มี [data-lang="la"] ให้ fallback แสดง Thai แทน
+    document.querySelectorAll('[data-lang="la"]').forEach(el => el.classList.add('active'));
+    document.querySelectorAll('[data-lang="th"]').forEach(el => {
+      const parent = el.parentElement;
+      if (!parent.querySelector('[data-lang="la"]')) {
+        el.classList.add('active');
+      }
+    });
+  } else {
+    document.querySelectorAll('[data-lang="' + lang + '"]').forEach(el => el.classList.add('active'));
+  }
+
+  // อัปเดตปุ่มภาษา
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-  try {
-    const activeBtn = document.querySelector('.lang-btn[onclick="setLang(\'' + lang + '\')"]');
-    if (activeBtn) activeBtn.classList.add('active');
-  } catch(e) {}
-  // ตั้ง html lang attribute
+  const btn = document.querySelector('.lang-btn[onclick="setLang(\'' + lang + '\')"]');
+  if (btn) btn.classList.add('active');
+
   document.documentElement.lang = lang === 'la' ? 'lo' : lang;
-  // บันทึกค่า
   localStorage.setItem('vith-lang', lang);
 }
 
@@ -34,29 +43,22 @@ window.addEventListener('scroll', () => {
   if (bar) bar.style.width = pct + '%';
 });
 
-// ─── INTERACTIVE FLOOR PLAN ───
+// ─── FLOOR PLAN ───
 function showZone(zoneId) {
-  document.querySelectorAll('.zone-card').forEach(card => card.classList.remove('zone-active'));
+  document.querySelectorAll('.zone-card').forEach(c => c.classList.remove('zone-active'));
   document.querySelectorAll('.hotspot').forEach(h => h.classList.remove('active'));
-
   const card = document.getElementById('zone-' + zoneId);
   if (card) {
     card.classList.add('zone-active');
     card.style.opacity = '0.4';
-    requestAnimationFrame(() => {
-      card.style.transition = 'opacity 0.25s ease';
-      card.style.opacity = '1';
-    });
-    if (window.innerWidth < 800) {
-      card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
+    requestAnimationFrame(() => { card.style.transition = 'opacity 0.25s ease'; card.style.opacity = '1'; });
+    if (window.innerWidth < 800) card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
-
-  const hotspot = document.querySelector('[data-zone="' + zoneId + '"]');
-  if (hotspot) hotspot.classList.add('active');
+  const hs = document.querySelector('[data-zone="' + zoneId + '"]');
+  if (hs) hs.classList.add('active');
 }
 
-// ─── FAQ TOGGLE ───
+// ─── FAQ ───
 function toggleFaq(item) {
   const isOpen = item.classList.contains('open');
   document.querySelectorAll('.faq-item').forEach(f => f.classList.remove('open'));
@@ -70,43 +72,26 @@ function submitLead() {
   const product = document.getElementById('f-product').value.trim();
   const pkg     = document.getElementById('f-package').value;
   const phase   = document.getElementById('f-phase').value;
-
   const nameEl    = document.getElementById('f-name');
   const contactEl = document.getElementById('f-contact');
-  nameEl.style.borderColor    = '';
-  contactEl.style.borderColor = '';
-
+  nameEl.style.borderColor = contactEl.style.borderColor = '';
   if (!name || !contact) {
     if (!name)    nameEl.style.borderColor    = 'var(--red)';
     if (!contact) contactEl.style.borderColor = 'var(--red)';
     return;
   }
-
-  const msg = encodeURIComponent(
-    'สนใจจองบูถ VITH Hub\n' +
-    'ชื่อ/บริษัท: ' + name + '\n' +
-    'ติดต่อ: ' + contact + '\n' +
-    'สินค้า: ' + product + '\n' +
-    'Package: ' + pkg + '\n' +
-    'Phase: ' + phase
-  );
-
+  const msg = encodeURIComponent('สนใจจองบูถ VITH Hub\nชื่อ/บริษัท: '+name+'\nติดต่อ: '+contact+'\nสินค้า: '+product+'\nPackage: '+pkg+'\nPhase: '+phase);
   const toast = document.getElementById('toast');
   if (toast) { toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 4000); }
-
   document.getElementById('leadForm').innerHTML =
-    '<div style="text-align:center;padding:2rem 1rem;">' +
-      '<div style="font-size:3rem;margin-bottom:1rem;">🎉</div>' +
-      '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:2rem;margin-bottom:0.5rem;">ขอบคุณมากครับ!</div>' +
-      '<p style="color:var(--muted);font-size:0.9rem;margin-bottom:1.5rem;line-height:1.6;">ทีมงานจะติดต่อกลับภายใน 24 ชั่วโมง<br>สามารถ inbox LINE เราได้เลยเพื่อความเร็วยิ่งขึ้น</p>' +
-      '<a href="' + LINE_URL + '?text=' + msg + '" target="_blank"' +
-        ' style="display:inline-block;background:#06C755;color:#fff;padding:12px 28px;border-radius:99px;font-weight:800;font-size:0.95rem;text-decoration:none;">' +
-        '💬 ส่งข้อมูลผ่าน LINE ทันที' +
-      '</a>' +
-    '</div>';
+    '<div style="text-align:center;padding:2rem 1rem;">'+
+    '<div style="font-size:3rem;margin-bottom:1rem;">🎉</div>'+
+    '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:2rem;margin-bottom:0.5rem;">ขอบคุณมากครับ!</div>'+
+    '<p style="color:var(--muted);font-size:0.9rem;margin-bottom:1.5rem;line-height:1.6;">ทีมงานจะติดต่อกลับภายใน 24 ชั่วโมง<br>inbox LINE เราได้เลยเพื่อความเร็วยิ่งขึ้น</p>'+
+    '<a href="'+LINE_URL+'?text='+msg+'" target="_blank" style="display:inline-block;background:#06C755;color:#fff;padding:12px 28px;border-radius:99px;font-weight:800;font-size:0.95rem;text-decoration:none;">💬 ส่งข้อมูลผ่าน LINE ทันที</a></div>';
 }
 
-// ─── POPUP FUNCTIONS ───
+// ─── POPUP ───
 function openPopup() {
   const el = document.getElementById('popupOverlay');
   if (el) el.classList.add('popup-open');
@@ -122,39 +107,34 @@ function handlePopupRemind() {
   const btn = document.getElementById('popupRemindBtn');
   if (!btn) return;
   btn.textContent = '✅ จะแจ้งให้นะครับ!';
-  btn.style.background   = 'rgba(6,199,85,0.15)';
-  btn.style.borderColor  = 'rgba(6,199,85,0.4)';
-  btn.style.color        = '#06C755';
+  btn.style.background = 'rgba(6,199,85,0.15)';
+  btn.style.borderColor = 'rgba(6,199,85,0.4)';
+  btn.style.color = '#06C755';
   btn.disabled = true;
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
 
-// COUNTDOWN to March 25, 2026
+// Countdown
 const POPUP_TARGET = new Date('2026-03-25T00:00:00+07:00');
 function updatePopupCountdown() {
   const diff = POPUP_TARGET - new Date();
   if (diff <= 0) return;
-  const set = (id, val) => { const el = document.getElementById(id); if(el) el.textContent = String(val).padStart(2,'0'); };
-  set('popupDays',  Math.floor(diff/86400000));
-  set('popupHours', Math.floor((diff%86400000)/3600000));
-  set('popupMins',  Math.floor((diff%3600000)/60000));
-  set('popupSecs',  Math.floor((diff%60000)/1000));
+  const s = v => String(Math.floor(v)).padStart(2,'0');
+  const g = id => document.getElementById(id);
+  if (g('popupDays'))  g('popupDays').textContent  = s(diff/86400000);
+  if (g('popupHours')) g('popupHours').textContent = s((diff%86400000)/3600000);
+  if (g('popupMins'))  g('popupMins').textContent  = s((diff%3600000)/60000);
+  if (g('popupSecs'))  g('popupSecs').textContent  = s((diff%60000)/1000);
 }
 updatePopupCountdown();
 setInterval(updatePopupCountdown, 1000);
 
 // ─── INIT ───
 document.addEventListener('DOMContentLoaded', () => {
-  // Restore saved language
   const saved = localStorage.getItem('vith-lang');
-  if (saved && ['th', 'la', 'en'].includes(saved)) {
-    setLang(saved);
-  } else {
-    setLang('th'); // default
-  }
+  if (saved && ['th','la','en'].includes(saved)) setLang(saved);
+  else setLang('th');
 });
 
-// Auto-open popup หลังหน้าโหลดเสร็จ
-window.addEventListener('load', () => {
-  setTimeout(openPopup, 1200);
-});
+// Auto-open popup
+window.addEventListener('load', () => setTimeout(openPopup, 1200));
