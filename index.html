@@ -14,14 +14,12 @@
    ══════════════════════════════════ */
 .popup-overlay {
   position: fixed; inset: 0; z-index: 9999;
-  background: rgba(0,0,0,0.82);
-  backdrop-filter: blur(12px);
-  display: flex; align-items: center; justify-content: center;
-  padding: 1rem;
-  opacity: 0; pointer-events: none;
-  transition: opacity 0.4s ease;
+  background: rgba(0,0,0,0.82); backdrop-filter: blur(12px);
+  display: flex; align-items: center; justify-content: center; padding: 1rem;
+  opacity: 0; pointer-events: none; visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
 }
-.popup-overlay.popup-open { opacity: 1; pointer-events: all; }
+.popup-overlay.popup-open { opacity: 1; pointer-events: all; visibility: visible; }
 
 .popup-card {
   position: relative; width: 100%; max-width: 620px;
@@ -807,46 +805,8 @@
   </div>
 </div>
 
-<!-- script.js (functions เดิม) -->
+<!-- script.js จัดการทุกอย่าง รวม popup + language + countdown -->
 <script src="script.js"></script>
-
-<!-- ══════════════════════════════════
-     POPUP JS (inline = ทำงานแน่นอน)
-     ══════════════════════════════════ -->
-<script>
-function openPopup()  { document.getElementById('popupOverlay').classList.add('popup-open'); }
-function closePopup() { document.getElementById('popupOverlay').classList.remove('popup-open'); }
-function handlePopupOverlayClick(e) {
-  if (e.target === document.getElementById('popupOverlay')) closePopup();
-}
-function handlePopupRemind() {
-  const btn = document.getElementById('popupRemindBtn');
-  btn.textContent = '✅ จะแจ้งให้นะครับ!';
-  btn.style.background = 'rgba(6,199,85,0.15)';
-  btn.style.borderColor = 'rgba(6,199,85,0.4)';
-  btn.style.color = '#06C755';
-  btn.disabled = true;
-}
-document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closePopup(); });
-
-// Countdown
-const POPUP_TARGET = new Date('2026-03-25T00:00:00+07:00');
-function updatePopupCountdown() {
-  const diff = POPUP_TARGET - new Date();
-  if (diff <= 0) return;
-  document.getElementById('popupDays').textContent  = String(Math.floor(diff/86400000)).padStart(2,'0');
-  document.getElementById('popupHours').textContent = String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
-  document.getElementById('popupMins').textContent  = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
-  document.getElementById('popupSecs').textContent  = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
-}
-updatePopupCountdown();
-setInterval(updatePopupCountdown, 1000);
-
-// Auto-open หลังเว็บโหลดเสร็จ 1.2 วินาที
-window.addEventListener('load', function() {
-  setTimeout(openPopup, 1200);
-});
-</script>
 
 </body>
 </html>
