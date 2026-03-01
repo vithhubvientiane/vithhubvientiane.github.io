@@ -43,21 +43,27 @@ window.addEventListener('scroll', () => {
   if (bar) bar.style.width = pct + '%';
 });
 
-// ─── FLOOR PLAN ───
-function showZone(zoneId) {
-  document.querySelectorAll('.zone-card').forEach(c => c.classList.remove('zone-active'));
-  document.querySelectorAll('.hotspot').forEach(h => h.classList.remove('active'));
-  const card = document.getElementById('zone-' + zoneId);
-  if (card) {
-    card.classList.add('zone-active');
-    card.style.opacity = '0.4';
-    requestAnimationFrame(() => { card.style.transition = 'opacity 0.25s ease'; card.style.opacity = '1'; });
-    if (window.innerWidth < 800) card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+// ─── FLOOR PLAN (Lightbox System) ───
+function openLightbox() {
+  const lb = document.getElementById('floorplanLightbox');
+  if (lb) {
+    lb.style.display = 'flex';
+    document.body.style.overflow = 'hidden'; // ล็อกไม่ให้เลื่อนหน้าจอ
   }
-  const hs = document.querySelector('[data-zone="' + zoneId + '"]');
-  if (hs) hs.classList.add('active');
 }
 
+function closeLightbox() {
+  const lb = document.getElementById('floorplanLightbox');
+  if (lb) {
+    lb.style.display = 'none';
+    document.body.style.overflow = 'auto'; // ปลดล็อกหน้าจอ
+  }
+}
+
+// เพิ่มฟีเจอร์กด Esc เพื่อปิด Lightbox
+document.addEventListener('keydown', e => { 
+  if (e.key === 'Escape') closeLightbox(); 
+});
 // ─── FAQ ───
 function toggleFaq(item) {
   const isOpen = item.classList.contains('open');
